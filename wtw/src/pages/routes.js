@@ -1,30 +1,27 @@
-import Category from "@/pages/Category";
-import NotFound from "@/pages/NotFound";
-import Movies from "@/pages/Movies";
-import Movie from "@/pages/Movie";
-
 export default [
   {
-    alias: "/",
-    path: "/movies/",
-    component: Movies,
-    name: "movies",
-    props: true
+    path: "/",
+    component: () => import("@/pages/Home"),
+    name: "home"
   },
   {
-    path: "/movies/:category/",
-    component: Category,
-    name: "category",
-    props: true
+    path: "/movies/discover",
+    component: () => import("@/pages/Discover"),
+    name: "discover"
+  },
+  {
+    path: "/category/:id/",
+    component: () => import("@/pages/Category"),
+    name: "category"
   },
   {
     path: "/movies/:id/",
-    component: Movie,
-    name: "movie",
-    props: true
+    component: () => import("@/pages/Movie"),
+    name: "movie"
   },
   {
     path: "*",
-    component: NotFound
+    name: "404",
+    component: () => import("@/pages/NotFound")
   }
 ];

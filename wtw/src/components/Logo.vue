@@ -1,6 +1,10 @@
 <template functional>
   <router-link to="/">
-    <img class="c-logo" alt="logo" src="@/assets/logo.png" />
+    <img
+      class="c-logo"
+      alt="logo"
+      src="https://www.themoviedb.org/assets/2/v4/logos/312x276-primary-green-74212f6247252a023be0f02a5a45794925c3689117da9d20ffe47742a665c518.png"
+    />
   </router-link>
 </template>
 
@@ -9,7 +13,7 @@
   height: 100px;
   width: 100px;
   object-fit: contain;
-  background-color: white;
+  background-color: #101d27;
   padding: 20px;
 }
 </style>

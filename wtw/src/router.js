@@ -1,6 +1,6 @@
 import VueRouter from "vue-router";
 import Vue from "vue";
-import routes from "./routes.js";
+import routes from "./pages/routes.js";
 
 Vue.use(VueRouter);
 
@@ -18,5 +18,4 @@ const router = new VueRouter({
     }
   }
 });
-
 export default router;

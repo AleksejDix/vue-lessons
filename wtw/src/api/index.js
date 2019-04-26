@@ -1,9 +1,17 @@
-import Api from "./api";
+import category from "./repos/categories";
+import genre from "./repos/genre";
+import movie from "./repos/movie";
+import movieCategory from "./repos/movieCategory";
+import movieVideo from "./repos/movieVideo";
+import movieDiscover from "./repos/movieDiscover";
 
-const api = new Api({
-  version: 3,
-  endpoint: "https://api.themoviedb.org",
-  key: "9358e80dc961363e5396315291294f14"
-});
+const api = {
+  category,
+  movie,
+  genre,
+  movieCategory,
+  movieVideo,
+  movieDiscover
+};
 
 export default api;
