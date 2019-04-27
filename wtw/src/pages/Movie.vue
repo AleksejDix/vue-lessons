@@ -36,6 +36,11 @@
         </div>
         <div class="px-2">
           <h1 class="movie__title">{{ title }}</h1>
+          <ul class="list-reset">
+            <li v-for="actor in actors" :key="actor.id">
+              <Person :person="actor" />
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -44,32 +49,41 @@
 
 <script>
 import api from "@/api";
+import Person from "@/components/Person";
 
 export default {
-  props: ["id"],
+  components: { Person },
   data() {
     return {
+      loaded: false,
       backdrop_path: "",
       poster_path: "",
       overview: "overview",
       title: "title",
-      video: ""
+      video: "",
+      crew: [],
+      actors: []
     };
   },
   methods: {
     async getMovie() {
       this.loaded = false;
-      const id = this.id || this.$route.params.id;
+      const id = this.$route.params.id;
       const { data } = await api.movie.show(id);
       const video = await api.movieVideo.index()(id);
       const [first] = video.data.results;
+
       this.video = first.key;
       this.title = data.title;
       this.overview = data.overview;
       this.backdrop_path = data.backdrop_path;
       this.poster_path = data.poster_path;
       this.loaded = true;
-      console.log(data);
+
+      const moviePeopleResponse = await api.moviePeople.index()(id);
+
+      this.crew = moviePeopleResponse.data.crew;
+      this.actors = moviePeopleResponse.data.cast;
     }
   },
   mounted() {
@@ -127,7 +141,7 @@ export default {
     font-size: 3rem;
   }
   .offset {
-    transform: translateY(-34%);
+    transform: translateY(-300px);
   }
 
   .preview {

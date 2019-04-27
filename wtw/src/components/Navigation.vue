@@ -33,8 +33,7 @@ export default {
           query: {
             page: 1,
             sort_by: "popularity",
-            sort_order: "desc",
-            genre: ""
+            sort_order: "desc"
           }
         }
       ]

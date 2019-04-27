@@ -87,7 +87,7 @@ export default {
     query() {
       return {
         page: this.page,
-        genres: this.genres,
+        genres: this.genres || "",
         sort_by: this.sort_by,
         sort_order: this.sort_order
       };
