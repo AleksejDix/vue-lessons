@@ -5,6 +5,11 @@ export default [
     name: "home"
   },
   {
+    path: "/favorites",
+    component: () => import("./Favorites.vue"),
+    name: "favorites"
+  },
+  {
     path: "/movies/discover",
     component: () => import("./Discover.vue"),
     name: "discover"

@@ -11,17 +11,29 @@
           title
         }}</router-link>
       </li>
+      <li>
+        <router-link class="c-navigation__link" :to="{ name: 'favorites' }"
+          >Favorites <Badge>{{ favoritesCount }}</Badge></router-link
+        >
+      </li>
     </ul>
   </nav>
 </template>
 
 <script>
 import AppLogo from "./Logo";
+import Badge from "@/components/Badge";
 import api from "@/api";
 
 export default {
   components: {
-    AppLogo
+    AppLogo,
+    Badge
+  },
+  computed: {
+    favoritesCount() {
+      return this.$store.getters.index.length;
+    }
   },
   data() {
     return {

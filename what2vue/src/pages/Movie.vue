@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="movie">
     <div
       v-if="loaded"
       class="banner"
@@ -7,7 +7,7 @@
         backgroundColor: 'rgba(0, 0, 0, 0.55)',
         backgroundImage:
           'url(https://image.tmdb.org/t/p/w1400_and_h450_face/' +
-          backdrop_path +
+          movie.backdrop_path +
           ')'
       }"
     ></div>
@@ -17,9 +17,9 @@
           <div class="poster">
             <img
               class="poster__img"
-              v-if="poster_path"
-              :src="`https://image.tmdb.org/t/p/w500/${poster_path}`"
-              :alt="title"
+              v-if="movie.poster_path"
+              :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
+              :alt="movie.title"
             />
           </div>
           <div class="video">
@@ -35,12 +35,10 @@
           </div>
         </div>
         <div class="px-2">
-          <h1 class="movie__title">{{ title }}</h1>
-          <ul class="list-reset">
-            <li v-for="actor in actors" :key="actor.id">
-              <Person :person="actor" />
-            </li>
-          </ul>
+          <h1 class="movie__title">{{ movie.title }}</h1>
+          <button class="button" @click="toggleFavorite">
+            {{ isFavorite ? "remove from" : "add to" }} favotites
+          </button>
         </div>
       </div>
     </section>
@@ -49,41 +47,42 @@
 
 <script>
 import api from "@/api";
-import Person from "@/components/Person";
 
 export default {
-  components: { Person },
   data() {
     return {
       loaded: false,
-      backdrop_path: "",
-      poster_path: "",
-      overview: "overview",
-      title: "title",
       video: "",
-      crew: [],
-      actors: []
+      people: null,
+      movie: null
     };
   },
+  computed: {
+    isFavorite() {
+      return !!this.$store.getters.show(this.movie.id);
+    }
+  },
   methods: {
+    toggleFavorite() {
+      this.isFavorite
+        ? this.$store.dispatch("DESTROY_FAVORITE", this.movie.id)
+        : this.$store.dispatch("STORE_FAVORITE", this.movie);
+    },
     async getMovie() {
       this.loaded = false;
       const id = this.$route.params.id;
-      const { data } = await api.movie.show(id);
+
+      const movie = await api.movie.show(id);
+      this.movie = movie.data;
+
+      const people = await api.moviePeople.index()(id);
+      this.crew = people.data;
+
       const video = await api.movieVideo.index()(id);
       const [first] = video.data.results;
-
       this.video = first.key;
-      this.title = data.title;
-      this.overview = data.overview;
-      this.backdrop_path = data.backdrop_path;
-      this.poster_path = data.poster_path;
+
       this.loaded = true;
-
-      const moviePeopleResponse = await api.moviePeople.index()(id);
-
-      this.crew = moviePeopleResponse.data.crew;
-      this.actors = moviePeopleResponse.data.cast;
     }
   },
   mounted() {
