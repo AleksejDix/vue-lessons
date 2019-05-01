@@ -22,25 +22,25 @@ yarn global add @vue/cli
 
 ## create the project
 
-``` bash
-vue create wtw
+```bash
+vue create what2vue
 ```
 
 check manualy select features
 
 ## start the project
 
-``` bash
-cd wtw
+```bash
+cd what2vue
 vue serve
 ```
 
 ## start the ui
 
-``` bash
+```bash
 vue ui
 ```
 
-::: tip Task
-Setup CLI and explore the UI together
+::: tip
+Task Setup CLI and explore the UI together
 :::

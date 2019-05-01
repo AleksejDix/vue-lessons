@@ -16,6 +16,7 @@ Slack: [Chat](https://webzuerich.slack.com)
 
 Channel: [#vue-zurich](https://webzuerich.slack.com/messages/C6618CM9C/)
 
+
 ## Workshop format
 
 You can ask questions any time. Raise your hand or knock on the table.

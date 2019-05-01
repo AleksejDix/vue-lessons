@@ -1,3 +1,4 @@
+
 # Outline
 
 ## Day 1

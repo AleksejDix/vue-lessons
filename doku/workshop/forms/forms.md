@@ -2,9 +2,9 @@
 
 Forms in vue.js are reactive
 
-## Simple Checkbox with Bool
+## Checkbox with v-model
 
-<FormCheckbox/>
+<CheckboxInput/>
 
 ```vue
 <template>
@@ -27,3 +27,37 @@ export default {
 };
 </script>
 ```
+
+## Input with v-model
+
+<form @submit.prevent>
+  <EmailInput/>
+</form>
+
+```vue
+<template>
+  <div>
+    <label>
+      <div>email:</div>
+      <input type="email" v-model="email" />
+    </label>
+  </div>
+</template>
+
+
+<script>
+export default {
+  data() {
+    return {
+      email: ""
+    };
+  }
+};
+</script>
+
+```
+
+::: tip
+  Submit a newsletter form with e-mail and data privacy checkbox
+  Log the form to the console.
+:::

@@ -13,11 +13,12 @@ module.exports = {
       ['/components/directives', 'Directives'],
       ['/components/composition', 'Composition'],
       ['/components/communication', 'Communication'],
-      ['/components/lifecycle', 'lifecycle'],
-      ['/data/data', 'Remote Data'],
+      ['/components/lifecycle', 'Component lifecycle'],
       ['/forms/forms', 'Formulare'],
+      ['/router/dynamic', 'Dynamic Components'],
       ['/router/router', 'Vue Router'],
-      ['/vuex/vuex', 'State Management - Vuex']
+      ['/data/data', 'Remote Data'],
+      ['/state/state', 'State Management - Vuex']
     ]
   }
 }

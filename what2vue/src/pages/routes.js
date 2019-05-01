@@ -1,27 +1,27 @@
 export default [
   {
     path: "/",
-    component: () => import("@/pages/Home"),
+    component: () => import("./Home.vue"),
     name: "home"
   },
   {
     path: "/movies/discover",
-    component: () => import("@/pages/Discover"),
+    component: () => import("./Discover.vue"),
     name: "discover"
   },
   {
     path: "/category/:id/",
-    component: () => import("@/pages/Category"),
+    component: () => import("./Category.vue"),
     name: "category"
   },
   {
     path: "/movies/:id/",
-    component: () => import("@/pages/Movie"),
+    component: () => import("./Movie.vue"),
     name: "movie"
   },
   {
     path: "*",
     name: "404",
-    component: () => import("@/pages/NotFound")
+    component: () => import("./NotFound.vue")
   }
 ];

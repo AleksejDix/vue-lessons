@@ -1,5 +1,9 @@
 # VUEX
 
+![An image](./vuex.png)
+
+[Vuex Intro Guide](https://vuex.vuejs.org/)
+
 Global Application State should live outside in Vuex and not in the app
 This will simplify the complecity of passing props down and event up.
 
