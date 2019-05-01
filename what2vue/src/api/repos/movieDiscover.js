@@ -4,7 +4,6 @@ export default {
   index: (config = {}) => {
     const { query } = config;
     const { sort_by, sort_order, page = 1, genres: with_genres } = query;
-    console.log(with_genres);
     const params = {
       sort_by: `${sort_by}.${sort_order}`,
       page,

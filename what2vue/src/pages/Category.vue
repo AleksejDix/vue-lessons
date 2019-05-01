@@ -61,12 +61,9 @@ export default {
   },
   methods: {
     async getCategory() {
-      console.log(this.$route);
       const id = this.$route.params.id;
       const query = this.query;
-      console.log(query);
       const { data, status } = await api.movieCategory.show(id, { query });
-      console.log(data, status);
       if (status !== 200) {
         this.$router.push({ name: "404" });
       }
