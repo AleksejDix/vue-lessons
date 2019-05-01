@@ -1,5 +1,5 @@
 {
-  "name": "what-2-vue",
+  "name": "what2vue",
   "version": 2,
   "builds": [{ "src": "package.json", "use": "@now/static-build" }],
   "routes": [

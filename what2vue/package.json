@@ -1,7 +1,6 @@
 {
-  "name": "wtw",
-  "version": "0.1.0",
-  "private": true,
+  "name": "what2vue",
+  "version": "0.0.3",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
