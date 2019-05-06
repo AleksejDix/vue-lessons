@@ -12,7 +12,7 @@ twitter: [@aleksejdix](https://twitter.com/@aleksejdix)
 
 ## Community / Chat
 
-Webzurich Community: [webzurich](https://webzueri.ch/)
+web zurich Community: [webzurich](https://webzueri.ch/)
 
 Vue Zürich Meetup: [vue_zurich](https://www.meetup.com/vue_zurich/)
 

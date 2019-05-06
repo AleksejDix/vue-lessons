@@ -1,12 +1,18 @@
 # CLI & Vue Dev Tools
 
-Dokumentation [CLI](https://cli.vuejs.org/)
+## Vue.js
+
+Documentation [CLI](https://cli.vuejs.org/)
+
+## Workshop Repository
+
+clone the repo [https://github.com/AleksejDix/vue-lessons](https://github.com/AleksejDix/vue-lessons)
 
 ## Installation
 
 ### Dev Tools for Chrome
 
-Add Plugin to chrome [Dev Tools](https://github.com/vuejs/vue-devtools)
+Add plugin to chrome [Dev Tools](https://github.com/vuejs/vue-devtools)
 
 ### node.js
 
@@ -23,7 +29,7 @@ yarn global add @vue/cli
 ## create the project
 
 ```bash
-vue create what2vue
+vue create <YOUR_APP_NAME>
 ```
 
 check manualy select features
@@ -31,7 +37,7 @@ check manualy select features
 ## start the project
 
 ```bash
-cd what2vue
+cd <YOUR_APP_NAME>
 vue serve
 ```
 

@@ -6,8 +6,9 @@ module.exports = {
     sidebar: [
       '/',
       ['/intro/intro', 'Intro'],
-      ['/devtools/devtools', 'Chrome Dev Tools'],
-      ['/cli/cli', 'CLI'],
+      ['/devtools/devtools', 'Dev Tools'],
+      ['/devtools/vetur', 'Vetur'],
+      ['/setup/cli', 'CLI'],
       ['/reactivity/reactivity', 'Reactivity'],
       ['/components/components', 'Components'],
       ['/components/directives', 'Directives'],

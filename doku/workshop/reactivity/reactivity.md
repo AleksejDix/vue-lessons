@@ -1,7 +1,7 @@
 # Vue.js Reactivity System
 
-Vue.js 2.x works with ES5 Getters and Setters
-Vue.js turns every JavaScript Object getters and setters
+Vue.js 2.x works with ES5 getters and setters
+Vue.js turns every JavaScript Object into getters and setters
 
 ```js
 
@@ -10,7 +10,7 @@ const obj = {
 }
 ```
 
-`this` inside vue maps to internal `data` and other functionalies of vue
+`this` inside vue maps to internal `data` and other vue functionalities
 
 ```js
 const obj = {

@@ -1,4 +1,4 @@
-# Dynamic component
+# Dynamic components
 
 Homepage
 

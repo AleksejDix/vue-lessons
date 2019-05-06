@@ -2,7 +2,7 @@
 
 Forms in vue.js are reactive
 
-## Checkbox with v-model
+## Checkbox – v-model
 
 <CheckboxInput/>
 
@@ -28,7 +28,7 @@ export default {
 </script>
 ```
 
-## Input with v-model
+## Input - v-model
 
 <form @submit.prevent>
   <EmailInput/>
