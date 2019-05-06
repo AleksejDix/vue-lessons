@@ -26,8 +26,11 @@ export default [
   },
   {
     path: "/404",
-    alias: "*",
     name: "404",
-    component: () => import("./NotFound.vue")
+    component: () => import("./_404.vue")
+  },
+  {
+    path: "*",
+    redirect: "404"
   }
 ];
