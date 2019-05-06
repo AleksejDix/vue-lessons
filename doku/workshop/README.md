@@ -1,6 +1,8 @@
 
 # Outline
 
+![framework](./framework.png)
+
 ## Day 1
 
 1. Intro
