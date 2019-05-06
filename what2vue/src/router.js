@@ -1,4 +1,5 @@
 import VueRouter from "vue-router";
+import NProgress from "nprogress";
 import Vue from "vue";
 import routes from "./pages/routes.js";
 
@@ -17,6 +18,17 @@ const router = new VueRouter({
       };
     }
   }
+});
+
+router.beforeEach((routeTo, routeFrom, next) => {
+  if (routeFrom.name !== null) {
+    NProgress.start();
+  }
+  next();
+});
+
+router.afterEach(() => {
+  NProgress.done();
 });
 
 export default router;
