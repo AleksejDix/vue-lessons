@@ -18,7 +18,7 @@
           </select>
         </div>
         <div v-if="genres_options.length > 0">
-          <select v-model="genres" name="genres">
+          <select v-model="with_genres" name="with_genres">
             <option disabled value="">select genre</option>
             <option
               v-for="option in genres_options"
@@ -67,7 +67,7 @@ export default {
       page: +this.$route.query.page || 1,
       sort_by: this.$route.query.sort_by || 'popularity',
       sort_order: this.$route.query.sort_order || 'desc',
-      genres: '',
+      with_genres: '',
       genres_options: [],
       sort_options: [
         { value: 'popularity', name: 'Popularity' },
@@ -87,7 +87,7 @@ export default {
     query() {
       return {
         page: this.page,
-        genres: this.genres || '',
+        with_genres: this.with_genres || '',
         sort_by: this.sort_by,
         sort_order: this.sort_order
       }
@@ -109,7 +109,7 @@ export default {
         this.reset(next)
       }
     },
-    async 'query.genres'(next, prev) {
+    async 'query.with_genres'(next, prev) {
       if (next !== prev) {
         this.reset(next)
       }
@@ -117,7 +117,7 @@ export default {
     '$route.query'(next, prev) {
       if (next !== prev) {
         this.page = next.page
-        this.genres = next.genres
+        this.with_genres = next.with_genres
         this.sort_by = next.sort_by
         this.sort_order = next.sort_order
       }
