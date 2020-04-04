@@ -133,17 +133,12 @@ export default {
   methods: {
     async getGenres() {
       const response = await api.genre.index()
-      return response.data.genres
+      return response.genres
     },
     async discover() {
       const query = this.query
-      const { data, status } = await api.movieDiscover.index({ query })
-
-      if (status !== 200) {
-        this.$router.push({ name: '404' })
-      }
-
-      const { total_results, results } = data
+      const response = await api.movieDiscover.index({ query })
+      const { total_results, results } = response
       this.total = total_results
       return results
     },

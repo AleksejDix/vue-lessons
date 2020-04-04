@@ -44,15 +44,15 @@ export default {
   methods: {
     async getPerson() {
       const response = await api.moviePeople.show(this.id)
-      this.person = response.data
+      this.person = response
     },
     async getMovies() {
       const response = await api.personMovie.index(this.id)
-      this.movies = response.data.cast
+      this.movies = response.cast
     },
     async getPersonImages() {
       const response = await api.personImages.index(this.id)
-      this.images = response.data.profiles
+      this.images = response.profiles
     }
   }
 }

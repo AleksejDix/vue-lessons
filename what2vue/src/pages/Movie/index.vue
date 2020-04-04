@@ -45,6 +45,14 @@
 <script>
 import api from '@/api'
 
+const getFirstVideo = id => async () => {
+  const response = await api.movieVideo.index(id)
+  const [firstVideo] = response.results
+  if (!firstVideo) return
+  if (!firstVideo.key) return
+  return firstVideo.key
+}
+
 export default {
   data() {
     return {
@@ -82,26 +90,8 @@ export default {
         : this.$store.dispatch('STORE_FAVORITE', this.movie)
     },
     async getMovie() {
-      try {
-        const response = await api.movie.show(this.id)
-        console.log(response.status)
-        // if (response.status === 404) {
-        //   throw new Error(404);
-        // }
-        const movie = response.data
-        return movie
-      } catch (error) {
-        if (error.response.status === 404) {
-          this.$router.push({ name: '404' })
-        }
-      }
-    },
-    async getFirstVideo() {
-      const response = await api.movieVideo.index(this.id)
-      const [firstVideo] = response.data.results
-      if (!firstVideo) return
-      if (!firstVideo.key) return
-      return firstVideo.key
+      const response = await api.movie.show(this.id)
+      return response
     },
     getMoviePage() {
       this.loaded = false
@@ -113,7 +103,7 @@ export default {
 
       return this.getMovie()
         .then(setMovie)
-        .then(() => this.getFirstVideo())
+        .then(getFirstVideo(this.id))
         .then(response => {
           this.loaded = true
           setVideo(response)

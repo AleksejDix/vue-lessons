@@ -54,14 +54,11 @@ export default {
   },
   methods: {
     async getCategory() {
-      try {
-        const { data } = await api.movieCategory.show(this.category.id)
-        const { total_results, results } = data
-        this.total = total_results
-        this.movies = results
-      } catch (error) {
-        console.log(error)
-      }
+      const response = await api.movieCategory.show(this.category.id)
+      const { total_results, results } = response
+      this.total = total_results
+      this.movies = results
+      return response
     }
   }
 }

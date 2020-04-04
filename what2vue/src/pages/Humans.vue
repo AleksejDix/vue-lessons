@@ -32,8 +32,8 @@ export default {
     async getPeople() {
       const response = await api.moviePeople.index(this.id)
       this.peope = {
-        crew: response.data.crew,
-        cast: response.data.cast
+        crew: response.crew,
+        cast: response.cast
       }
       return response
     }

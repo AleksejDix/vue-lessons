@@ -2,7 +2,7 @@
   <section class="owl  py-2 ">
     <header class="px-2 flex space-between">
       <h1>{{ name }}</h1>
-      <span> {{ total }}</span>
+      <span>{{ total }}</span>
     </header>
     <div v-if="hasMovies">
       <MovieList :list="movies" />
@@ -72,16 +72,10 @@ export default {
     async getCategory() {
       const query = this.query
       const id = this.$route.params.id
-      try {
-        const response = await api.movieCategory.show(id, { query })
-        const { total_results = 0, results = [] } = response.data
-        this.total = total_results
-        return results
-      } catch (error) {
-        if (status !== 200) {
-          this.$router.push({ name: '404' })
-        }
-      }
+      const response = await api.movieCategory.show(id, { query })
+      const { total_results = 0, results = [] } = response
+      this.total = total_results
+      return results
     },
     updateQuery(query) {
       this.$router.push({ query })

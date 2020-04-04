@@ -29,7 +29,6 @@ export default new Vuex.Store({
   mutations: {
     [store]: (state, payload) => state.favorites.push(payload),
     [destroy]: (state, id) => {
-      console.log(id)
       state.favorites = state.favorites.filter(wihtoutID(id))
     }
   },

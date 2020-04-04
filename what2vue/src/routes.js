@@ -1,4 +1,4 @@
-import Home from '@/pages/Home.vue'
+import Home from '@/pages/Home'
 
 export default [
   {
@@ -8,45 +8,45 @@ export default [
   },
   {
     path: '/favorites',
-    component: () => import('@/pages/Favorites.vue'),
+    component: () => import('@/pages/Favorites'),
     name: 'favorites'
   },
   {
     path: '/movies/discover',
-    component: () => import('@/pages/Discover.vue'),
+    component: () => import('@/pages/Discover'),
     name: 'discover'
   },
   {
     path: '/category/:id/',
-    component: () => import('@/pages/Category.vue'),
+    component: () => import('@/pages/Category'),
     name: 'category'
   },
   {
     path: '/movies/:id/',
-    component: () => import('@/pages/Movie.vue'),
+    component: () => import('@/pages/Movie'),
     children: [
       {
         path: '',
         alias: 'cast',
-        component: () => import('@/pages/Humans.vue'),
+        component: () => import('@/pages/Humans'),
         name: 'cast'
       },
       {
         path: 'crew',
-        component: () => import('@/pages/Humans.vue'),
+        component: () => import('@/pages/Humans'),
         name: 'crew'
       }
     ]
   },
   {
     path: '/person/:id/',
-    component: () => import('@/pages/Person.vue'),
+    component: () => import('@/pages/Person'),
     name: 'person'
   },
   {
     path: '/404',
     name: '404',
-    component: () => import('@/pages/_404.vue')
+    component: () => import('@/pages/_404')
   },
   {
     path: '*',
