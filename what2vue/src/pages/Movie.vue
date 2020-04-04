@@ -11,10 +11,10 @@
       <div class="offset owl">
         <div class="preview">
           <div class="poster">
-            <img class="poster__img" v-if="posterURL" :src="posterURL" />
+            <img v-if="posterURL" class="poster__img" :src="posterURL" />
           </div>
           <div class="video">
-            <div class="ratio" v-if="videoURL">
+            <div v-if="videoURL" class="ratio">
               <iframe
                 class="ratio-object"
                 :src="videoURL"
@@ -28,14 +28,14 @@
         <div class="px-2">
           <h1 class="movie__title">{{ movie.title }}</h1>
           <button class="button" @click="toggleFavorite">
-            {{ isFavorite ? "remove from" : "add to" }} favorites
+            {{ isFavorite ? 'remove from' : 'add to' }} favorites
           </button>
-
-          <ul class="list-reset">
-            <li v-for="person in people.crew" :key="person.credit_id">
-              <Person :person="person" />
-            </li>
-          </ul>
+          <div>
+            <router-link :to="{ name: 'cast' }">cast</router-link>
+            <router-link :to="{ name: 'crew' }">crew</router-link>
+          </div>
+          cast
+          <router-view />
         </div>
       </div>
     </section>
@@ -43,95 +43,85 @@
 </template>
 
 <script>
-import api from "@/api";
+import api from '@/api'
 
 export default {
   data() {
     return {
       id: this.$route.params.id,
       loaded: false,
-      movie: "",
-      video: "",
+      movie: '',
+      video: '',
       people: {}
-    };
+    }
   },
   computed: {
     isFavorite() {
-      return !!this.$store.getters.show(this.movie.id);
+      return !!this.$store.getters.show(this.movie.id)
     },
     videoURL() {
-      if (!this.video) return;
-      return `https://www.youtube.com/embed/${this.video}`;
+      if (!this.video) return
+      return `https://www.youtube.com/embed/${this.video}`
     },
     posterURL() {
-      if (!this.movie.poster_path) return;
-      return `https://image.tmdb.org/t/p/w500/${this.movie.poster_path}`;
+      if (!this.movie.poster_path) return
+      return `https://image.tmdb.org/t/p/w500/${this.movie.poster_path}`
     },
     backgroundURL() {
-      if (!this.movie.backdrop_path) return;
-      return `https://image.tmdb.org/t/p/w1400_and_h450_face/${
-        this.movie.backdrop_path
-      }`;
+      if (!this.movie.backdrop_path) return
+      return `https://image.tmdb.org/t/p/w1400_and_h450_face/${this.movie.backdrop_path}`
     }
+  },
+  mounted() {
+    this.getMoviePage()
   },
   methods: {
     toggleFavorite() {
       this.isFavorite
-        ? this.$store.dispatch("DESTROY_FAVORITE", this.movie.id)
-        : this.$store.dispatch("STORE_FAVORITE", this.movie);
+        ? this.$store.dispatch('DESTROY_FAVORITE', this.movie.id)
+        : this.$store.dispatch('STORE_FAVORITE', this.movie)
     },
     async getMovie() {
       try {
-        const response = await api.movie.show(this.id);
-        console.log(response.status);
+        const response = await api.movie.show(this.id)
+        console.log(response.status)
         // if (response.status === 404) {
         //   throw new Error(404);
         // }
-        const movie = response.data;
-        return movie;
+        const movie = response.data
+        return movie
       } catch (error) {
         if (error.response.status === 404) {
-          this.$router.push({ name: "404" });
+          this.$router.push({ name: '404' })
         }
       }
     },
     async getFirstVideo() {
-      const response = await api.movieVideo.index()(this.id);
-      const [firstVideo] = response.data.results;
-      if (!firstVideo) return;
-      if (!firstVideo.key) return;
-      return firstVideo.key;
+      const response = await api.movieVideo.index()(this.id)
+      const [firstVideo] = response.data.results
+      if (!firstVideo) return
+      if (!firstVideo.key) return
+      return firstVideo.key
     },
-    async getPeople() {
-      const response = await api.moviePeople.index()(this.id);
-      return {
-        crew: response.data.crew,
-        cast: response.data.cast
-      };
-    },
-    async getMoviePage() {
-      this.loaded = false;
+    getMoviePage() {
+      this.loaded = false
+      const setMovie = movie => ((this.movie = movie), movie)
 
-      const setMovie = movie => ((this.movie = movie), movie);
-      const getVideoAndPeople = () =>
-        Promise.all([this.getFirstVideo(), this.getPeople()]);
-      const setVideoAndPeople = ([video, people]) => {
-        this.video = video;
-        this.people = people;
-      };
+      const setVideo = video => {
+        this.video = video
+      }
 
-      this.getMovie()
+      return this.getMovie()
         .then(setMovie)
-        .then(getVideoAndPeople)
-        .then(setVideoAndPeople);
-
-      this.loaded = true;
+        .then(() => this.getFirstVideo())
+        .then(response => {
+          this.loaded = true
+          setVideo(response)
+          return response
+        })
     }
-  },
-  mounted() {
-    this.getMoviePage();
   }
-};
+}
 </script>
 
 <style>

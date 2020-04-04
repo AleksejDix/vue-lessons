@@ -1,7 +1,7 @@
 <template functional>
   <router-link
     class="movie__link"
-    :to="{ name: 'movie', params: { id: props.movie.id, movie: props.movie } }"
+    :to="{ name: 'cast', params: { id: props.movie.id, movie: props.movie } }"
   >
     <header class="movie__header">
       <h2 class="movie__title">

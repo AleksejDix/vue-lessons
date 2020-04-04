@@ -21,52 +21,52 @@
 </template>
 
 <script>
-import AppLogo from "./Logo";
-import Badge from "@/components/Badge";
-import api from "@/api";
+import AppLogo from './Logo'
+import Badge from '@/components/Badge'
+import api from '@/api'
 
 export default {
   components: {
     AppLogo,
     Badge
   },
-  computed: {
-    favoritesCount() {
-      return this.$store.getters.index.length;
-    }
-  },
   data() {
     return {
       navigation: [
         {
-          title: "Discover",
-          name: "discover",
+          title: 'Discover',
+          name: 'discover',
           params: {},
           query: {
             page: 1,
-            sort_by: "popularity",
-            sort_order: "desc"
+            sort_by: 'popularity',
+            sort_order: 'desc'
           }
         }
       ]
-    };
+    }
+  },
+  computed: {
+    favoritesCount() {
+      return this.$store.getters.index.length
+    }
   },
   mounted() {
-    const cats = api.category.index();
+    const cats = api.category.index()
     const catLinks = cats.map(({ name: title, id }) => ({
       title,
-      name: "category",
+      name: 'category',
       params: {
-        id
+        catID: id
       },
       query: {
         page: 1
       }
-    }));
+    }))
 
-    this.navigation = this.navigation.concat(catLinks);
+    this.navigation = this.navigation.concat(catLinks)
   }
-};
+}
 </script>
 
 <style scoped>
