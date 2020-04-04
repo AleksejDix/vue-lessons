@@ -3,7 +3,7 @@
     <Navigation />
     <main class="main">
       <transition name="fade" mode="out-in">
-        <router-view />
+        <router-view :key="$route.params.catID" />
       </transition>
     </main>
   </div>
