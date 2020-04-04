@@ -115,7 +115,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .movie__title {
   color: #f5f5f5;
   font-size: 2rem;

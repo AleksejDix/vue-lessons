@@ -7,6 +7,18 @@
       <h2 class="movie__title">
         {{ props.movie.title }}<span> • {{ props.movie.release_date }}</span>
       </h2>
+      <div class="rating owl-x">
+        <div
+          class="circle"
+          :class="{
+            red: props.movie.vote_average < 5,
+            orange:
+              props.movie.vote_average >= 5 && props.movie.vote_average < 7.5,
+            green: props.movie.vote_average >= 7.5
+          }"
+        ></div>
+        <div>{{ props.movie.vote_average * 10 }}%</div>
+      </div>
     </header>
 
     <div class="movie__image-place">
@@ -55,7 +67,7 @@
   position: relative;
   padding-top: 150%;
   background-color: #0f1c26;
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -67,5 +79,27 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background-color: black;
+}
+
+.green {
+  background-color: #02d473;
+}
+.orange {
+  background-color: orangered;
+}
+.red {
+  background-color: crimson;
 }
 </style>
