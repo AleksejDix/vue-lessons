@@ -1,4 +1,4 @@
-import axios from '@/api/config'
+import api from '@/api/config'
 export default {
-  index: (id, config = {}) => axios.get(`/person/${id}/images`, config)
+  index: (id, config = {}) => api.v3.get(`/person/${id}/images`, config)
 }

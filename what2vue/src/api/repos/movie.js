@@ -1,5 +1,5 @@
-import axios from '@/api/config'
+import api from '@/api/config'
 
 export default {
-  show: (id, config = {}) => axios.get(`movie/${id}`, config)
+  show: (id, config = {}) => api.v3.get(`movie/${id}`, config)
 }

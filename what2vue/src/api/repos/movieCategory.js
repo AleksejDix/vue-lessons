@@ -1,4 +1,4 @@
-import axios from '@/api/config'
+import api from '@/api/config'
 
 export default {
   show: (id, config = {}) => {
@@ -8,7 +8,7 @@ export default {
       }
     } = config
 
-    return axios.get(`movie/${id}`, {
+    return api.v3.get(`movie/${id}`, {
       params: {
         page: query.page
       }

@@ -8,6 +8,8 @@ import movieDiscover from '@/api/repos/movieDiscover'
 import person from '@/api/repos/person'
 import personMovies from '@/api/repos/personMovies'
 import personImages from '@/api/repos/personImages'
+import requestToken from '@/api/repos/requestToken'
+import accessToken from '@/api/repos/accessToken'
 
 const api = {
   category,
@@ -19,7 +21,8 @@ const api = {
   movieVideos,
   person,
   personMovies,
-  personImages
+  personImages,
+  requestToken,
+  accessToken
 }
-
 export default api

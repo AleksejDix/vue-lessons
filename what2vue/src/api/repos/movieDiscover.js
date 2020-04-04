@@ -1,4 +1,4 @@
-import axios from '@/api/config'
+import api from '@/api/config'
 
 export default {
   index: (config = {}) => {
@@ -11,7 +11,7 @@ export default {
       with_genres
     }
 
-    return axios.get(`discover/movie`, {
+    return api.v3.get(`discover/movie`, {
       params
     })
   }

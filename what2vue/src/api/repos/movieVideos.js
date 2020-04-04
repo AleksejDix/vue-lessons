@@ -1,5 +1,5 @@
-import axios from '@/api/config'
+import api from '@/api/config'
 
 export default {
-  index: (id, config = {}) => axios.get(`/movie/${id}/videos`, config)
+  index: (id, config = {}) => api.v3.get(`/movie/${id}/videos`, config)
 }
