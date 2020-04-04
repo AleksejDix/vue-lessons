@@ -36,8 +36,8 @@ export default {
     name() {
       if (!categoy) return
       if (!categoy.name) return
+      const categoy = api.category.show(this.$route.params.id)
       return categoy.name
-      const categoy = api.category.show(this.$route.params.catID)
     },
     query() {
       return {
@@ -71,7 +71,7 @@ export default {
   methods: {
     async getCategory() {
       const query = this.query
-      const id = this.$route.params.catID
+      const id = this.$route.params.id
       try {
         const response = await api.movieCategory.show(id, { query })
         const { total_results = 0, results = [] } = response.data

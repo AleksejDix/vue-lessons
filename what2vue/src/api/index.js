@@ -1,10 +1,10 @@
-import category from "./repos/categories";
-import genre from "./repos/genre";
-import movie from "./repos/movie";
-import movieCategory from "./repos/movieCategory";
-import movieVideo from "./repos/movieVideo";
-import moviePeople from "./repos/moviePeople";
-import movieDiscover from "./repos/movieDiscover";
+import category from '@/api/repos/categories'
+import genre from '@/api/repos/genre'
+import movie from '@/api/repos/movie'
+import movieCategory from '@/api/repos/movieCategory'
+import movieVideo from '@/api/repos/movieVideo'
+import moviePeople from '@/api/repos/moviePeople'
+import movieDiscover from '@/api/repos/movieDiscover'
 
 const api = {
   category,
@@ -14,6 +14,6 @@ const api = {
   movieDiscover,
   moviePeople,
   movieVideo
-};
+}
 
-export default api;
+export default api

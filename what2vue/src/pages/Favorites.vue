@@ -10,16 +10,16 @@
 </template>
 
 <script>
-import MovieList from "@/components/MovieList";
+import MovieList from '@/components/MovieList'
 export default {
   components: {
     MovieList
   },
   computed: {
-    has: () => list => "length" in list,
+    has: () => list => 'length' in list,
     movies() {
-      return this.$store.getters.index;
+      return this.$store.getters.index
     }
   }
-};
+}
 </script>

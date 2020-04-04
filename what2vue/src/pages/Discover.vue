@@ -5,7 +5,7 @@
       {{ total }}
     </header>
     <div class="filter">
-      <form class="owl-x" @submit.prevent="submit">
+      <form class="flex owl-x" @submit.prevent="submit">
         <div>
           <select v-model="sort_by" name="sort_by">
             <option
@@ -172,13 +172,6 @@ export default {
 </script>
 
 <style>
-.owl-x {
-  display: flex;
-}
-.owl-x > * + * {
-  margin-left: 1rem;
-}
-
 .filter {
   padding: 1rem 2rem;
 }

@@ -3,9 +3,9 @@
     <app-logo></app-logo>
     <ul class="c-navigation__list">
       <li
-        class="c-navigation__list-item"
         v-for="{ name, params, query, title } in navigation"
         :key="title"
+        class="c-navigation__list-item"
       >
         <router-link class="c-navigation__link" :to="{ name, params, query }">{{
           title
@@ -57,7 +57,7 @@ export default {
       title,
       name: 'category',
       params: {
-        catID: id
+        id
       },
       query: {
         page: 1

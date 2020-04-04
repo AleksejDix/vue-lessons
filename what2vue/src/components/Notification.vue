@@ -7,12 +7,17 @@
 
 <script>
 export default {
-  props: ["show"],
+  props: {
+    show: {
+      type: Boolean,
+      required: true
+    }
+  },
   mounted() {
     const timer = setTimeout(() => {
-      this.$emit("close");
-    }, 3000);
-    clearTimeout(timer);
+      this.$emit('close')
+    }, 3000)
+    clearTimeout(timer)
   }
-};
+}
 </script>

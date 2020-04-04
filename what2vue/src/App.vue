@@ -3,20 +3,20 @@
     <Navigation />
     <main class="main">
       <transition name="fade" mode="out-in">
-        <router-view :key="$route.params.catID" />
+        <router-view :key="$route.params.id" />
       </transition>
     </main>
   </div>
 </template>
 
 <script>
-import Navigation from "./components/Navigation";
+import Navigation from './components/Navigation'
 
 export default {
   components: {
     Navigation
   }
-};
+}
 </script>
 
 <style>
@@ -61,7 +61,7 @@ body {
 }
 
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -226,6 +226,14 @@ select {
 
 .owl > * + * {
   margin-top: 2rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.owl-x > * + * {
+  margin-left: 1rem;
 }
 
 .px-2 {

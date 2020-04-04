@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import CategoryItem from "@/components/CategoryItem";
+import CategoryItem from '@/components/CategoryItem'
 
-import api from "@/api";
+import api from '@/api'
 export default {
   components: {
     CategoryItem
@@ -19,16 +19,10 @@ export default {
   data() {
     return {
       categories: []
-    };
+    }
   },
   mounted() {
-    this.categories = api.category.index();
+    this.categories = api.category.index()
   }
-};
-</script>
-
-<style>
-.owl > * + * {
-  margin-top: 1.5rem;
 }
-</style>
+</script>

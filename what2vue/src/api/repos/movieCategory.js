@@ -1,4 +1,4 @@
-import axios from "../config";
+import axios from '@/api/config'
 
 export default {
   show: (id, config = {}) => {
@@ -6,11 +6,12 @@ export default {
       query = {
         page: 1
       }
-    } = config;
+    } = config
+
     return axios.get(`movie/${id}`, {
       params: {
         page: query.page
       }
-    });
+    })
   }
-};
+}

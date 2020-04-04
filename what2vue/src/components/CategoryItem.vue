@@ -22,7 +22,7 @@
     <div class="h-scoller">
       <div class="h-scoller__body">
         <ul class="list-reset h-scoller__list">
-          <li class="h-scoller__item" v-for="movie in movies" :key="movie.id">
+          <li v-for="movie in movies" :key="movie.id" class="h-scoller__item">
             <MovieItem :movie="movie" />
           </li>
         </ul>
@@ -32,33 +32,39 @@
 </template>
 
 <script>
-import api from "@/api";
-import MovieItem from "@/components/MovieItem";
+import api from '@/api'
+import MovieItem from '@/components/MovieItem'
 export default {
-  props: ["category"],
   components: { MovieItem },
+  props: {
+    category: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+
   data() {
     return {
       movies: [],
-      total: ""
-    };
+      total: ''
+    }
+  },
+  mounted() {
+    this.getCategory()
   },
   methods: {
     async getCategory() {
       try {
-        const { data } = await api.movieCategory.show(this.category.id);
-        const { total_results, results } = data;
-        this.total = total_results;
-        this.movies = results;
+        const { data } = await api.movieCategory.show(this.category.id)
+        const { total_results, results } = data
+        this.total = total_results
+        this.movies = results
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     }
-  },
-  mounted() {
-    this.getCategory();
   }
-};
+}
 </script>
 
 <style>

@@ -13,9 +13,7 @@
       <picture>
         <source
           :srcset="
-            `https://image.tmdb.org/t/p/w342/${
-              props.movie.poster_path
-            } 1x, https://image.tmdb.org/t/p/w780/${props.movie.poster_path} 2x`
+            `https://image.tmdb.org/t/p/w342/${props.movie.poster_path} 1x, https://image.tmdb.org/t/p/w780/${props.movie.poster_path} 2x`
           "
         />
         <img

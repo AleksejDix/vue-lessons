@@ -1,34 +1,34 @@
-import VueRouter from "vue-router";
-import NProgress from "nprogress";
-import Vue from "vue";
-import routes from "./pages/routes.js";
+import VueRouter from 'vue-router'
+import NProgress from 'nprogress'
+import Vue from 'vue'
+import routes from '@/routes.js'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition;
+      return savedPosition
     } else {
       return {
         x: 0,
         y: 0
-      };
+      }
     }
   }
-});
+})
 
 router.beforeEach((routeTo, routeFrom, next) => {
   if (routeFrom.name !== null) {
-    NProgress.start();
+    NProgress.start()
   }
-  next();
-});
+  next()
+})
 
 router.afterEach(() => {
-  NProgress.done();
-});
+  NProgress.done()
+})
 
-export default router;
+export default router

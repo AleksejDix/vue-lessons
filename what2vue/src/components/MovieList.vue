@@ -1,17 +1,22 @@
 <template>
   <ul class="list-reset movies__list px-2">
-    <li class="movies__list-item" v-for="movie in list" :key="movie.id">
+    <li v-for="movie in list" :key="movie.id" class="movies__list-item">
       <MovieItem :movie="movie" />
     </li>
   </ul>
 </template>
 
 <script>
-import MovieItem from "@/components/MovieItem";
+import MovieItem from '@/components/MovieItem'
 export default {
-  props: ["list"],
-  components: { MovieItem }
-};
+  components: { MovieItem },
+  props: {
+    list: {
+      type: Array,
+      default: () => []
+    }
+  }
+}
 </script>
 
 <style>

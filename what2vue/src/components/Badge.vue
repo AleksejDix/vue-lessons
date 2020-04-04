@@ -2,7 +2,7 @@
   <span class="badge"><slot></slot></span>
 </template>
 
-<style>
+<style scoped>
 .badge {
   display: inline-block;
   background-color: #02d473;
