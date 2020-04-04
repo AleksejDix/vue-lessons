@@ -28,12 +28,12 @@ export default [
       {
         path: '',
         alias: 'cast',
-        component: () => import('@/pages/Humans'),
+        component: () => import('@/pages/MovieCredits'),
         name: 'cast'
       },
       {
         path: 'crew',
-        component: () => import('@/pages/Humans'),
+        component: () => import('@/pages/MovieCredits'),
         name: 'crew'
       }
     ]

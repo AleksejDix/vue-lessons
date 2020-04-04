@@ -1,7 +1,7 @@
 <template>
   <section>
-    <ul class="list-reset people">
-      <li v-for="person in peopleType" :key="person.credit_id">
+    <ul class="list-reset credits">
+      <li v-for="person in creditsType" :key="person.credit_id">
         <Person :person="person" />
       </li>
     </ul>
@@ -17,21 +17,21 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      people: {}
+      credits: {}
     }
   },
   computed: {
-    peopleType() {
-      return this.people[this.$route.name]
+    creditsType() {
+      return this.credits[this.$route.name]
     }
   },
-  asmounted() {
-    this.getPeople()
+  mounted() {
+    this.getCredits()
   },
   methods: {
-    async getPeople() {
-      const response = await api.moviePeople.index(this.id)
-      this.peope = {
+    async getCredits() {
+      const response = await api.movieCredits.index(this.id)
+      this.credits = {
         crew: response.crew,
         cast: response.cast
       }
@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style scoped>
-.people {
+.credits {
   display: grid;
   grid-gap: 32px;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));

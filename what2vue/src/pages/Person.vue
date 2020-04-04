@@ -4,12 +4,6 @@
       <h1>{{ person.name }}</h1>
     </header>
 
-    <img
-      class="avatar"
-      :src="`https://image.tmdb.org/t/p/w500/${person.profile_path}`"
-      :alt="person.name"
-    />
-
     <div v-for="image in images" :key="image.file_path">
       <img
         class="avatar"
@@ -42,13 +36,13 @@ export default {
     this.getPersonImages()
   },
   methods: {
-    async getPerson() {
-      const response = await api.moviePeople.show(this.id)
-      this.person = response
-    },
     async getMovies() {
-      const response = await api.personMovie.index(this.id)
+      const response = await api.personMovies.index(this.id)
       this.movies = response.cast
+    },
+    async getPerson() {
+      const response = await api.person.show(this.id)
+      this.person = response
     },
     async getPersonImages() {
       const response = await api.personImages.index(this.id)

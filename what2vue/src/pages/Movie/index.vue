@@ -34,8 +34,9 @@
             <router-link :to="{ name: 'cast' }">cast</router-link>
             <router-link :to="{ name: 'crew' }">crew</router-link>
           </div>
-          cast
-          <router-view />
+          <transition name="fade" mode="out-in">
+            <router-view />
+          </transition>
         </div>
       </div>
     </section>
@@ -46,7 +47,7 @@
 import api from '@/api'
 
 const getFirstVideo = id => async () => {
-  const response = await api.movieVideo.index(id)
+  const response = await api.movieVideos.index(id)
   const [firstVideo] = response.results
   if (!firstVideo) return
   if (!firstVideo.key) return
