@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import router from '@/plugins/router'
-import App from '@/App'
 import store from '@/plugins/vuex'
+import '@/plugins/composition-api'
+import App from '@/App'
 
 new Vue({
   router,
