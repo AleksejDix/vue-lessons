@@ -97,7 +97,6 @@ export default {
     },
     async createAccess(payload) {
       const response = await api.accessToken.create(payload)
-      console.log(response)
       return response
     },
     login() {
