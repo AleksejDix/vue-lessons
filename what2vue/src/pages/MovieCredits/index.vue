@@ -11,7 +11,7 @@
 <script>
 import api from '@/api'
 
-import Person from '@/components/Person'
+import Person from '@/components/functional/Person'
 export default {
   components: { Person },
   data() {

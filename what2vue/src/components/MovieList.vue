@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import MovieItem from '@/components/MovieItem'
+import MovieItem from '@/components/functional/MovieItem'
 export default {
   components: { MovieItem },
   props: {

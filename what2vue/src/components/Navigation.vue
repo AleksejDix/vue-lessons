@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import AppLogo from './Logo'
-import Badge from '@/components/Badge'
+import AppLogo from '@/components/functional/Logo'
+import Badge from '@/components/functional/Badge'
 import api from '@/api'
 
 export default {

@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import router from './router.js'
+import router from '@/plugins/router'
 import App from '@/App'
-import store from './store.js'
+import store from '@/plugins/vuex'
 
 new Vue({
   router,

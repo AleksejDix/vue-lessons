@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router'
 import NProgress from 'nprogress'
 import Vue from 'vue'
-import routes from '@/routes.js'
+import routes from './routes.js'
 
 Vue.use(VueRouter)
 

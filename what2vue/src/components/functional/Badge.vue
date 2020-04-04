@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <span class="badge"><slot></slot></span>
 </template>
 

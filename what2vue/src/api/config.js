@@ -1,6 +1,6 @@
 import axios from 'axios'
 import NProgress from 'nprogress'
-import router from '@/router'
+import router from '@/plugins/router'
 
 export const baseURL = 'https://api.themoviedb.org/3/'
 export const api_key = '9358e80dc961363e5396315291294f14'
