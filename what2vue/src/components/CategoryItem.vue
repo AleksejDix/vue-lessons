@@ -67,7 +67,7 @@ export default {
 <style>
 .h-scoller {
   display: block;
-  padding-left: 2rem;
+
   height: 388px;
 }
 .h-scoller__body {

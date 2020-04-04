@@ -1,6 +1,6 @@
 <template>
-  <section class="owl py-2">
-    <header class="px-2 flex space-between">
+  <section class="container owl py-2">
+    <header class="flex space-between">
       <h1>Discover</h1>
       {{ total }}
     </header>
@@ -168,7 +168,7 @@ export default {
 
 <style>
 .filter {
-  padding: 1rem 2rem;
+  padding: 1rem 0;
 }
 
 .hidden {

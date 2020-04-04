@@ -1,22 +1,40 @@
 <template>
   <nav class="c-navigation">
-    <app-logo></app-logo>
-    <ul class="c-navigation__list">
-      <li
-        v-for="{ name, params, query, title } in navigation"
-        :key="title"
-        class="c-navigation__list-item"
-      >
-        <router-link class="c-navigation__link" :to="{ name, params, query }">{{
-          title
-        }}</router-link>
-      </li>
-      <li>
-        <router-link class="c-navigation__link" :to="{ name: 'favorites' }"
-          >Favorites <Badge>{{ favoritesCount }}</Badge></router-link
-        >
-      </li>
-    </ul>
+    <div class="container">
+      <div class="c-navigation__grid">
+        <div class="c-navigation__left">
+          <AppLogo />
+          <ul class="c-navigation__list">
+            <li
+              v-for="{ name, params, query, title } in navigation"
+              :key="title"
+              class="c-navigation__list-item"
+            >
+              <router-link
+                class="c-navigation__link"
+                :to="{ name, params, query }"
+                >{{ title }}</router-link
+              >
+            </li>
+            <li class="c-navigation__list-item">
+              <router-link
+                class="c-navigation__link"
+                :to="{ name: 'favorites' }"
+                >Favorites <Badge>{{ favoritesCount }}</Badge></router-link
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <button @click="login">login</button>
+          <img
+            class="user"
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -65,6 +83,26 @@ export default {
     }))
 
     this.navigation = this.navigation.concat(catLinks)
+  },
+  methods: {
+    async createToken() {
+      const response = await api.requestToken.create()
+      const { success, request_token } = response
+      if (success) {
+        window.open(
+          `https://www.themoviedb.org/auth/access?request_token=${request_token}&redirect_to=https://localhost:8080/`
+        )
+      }
+      return response
+    },
+    async createAccess(payload) {
+      const response = await api.accessToken.create(payload)
+      console.log(response)
+      return response
+    },
+    login() {
+      this.createToken()
+    }
   }
 }
 </script>
@@ -72,32 +110,56 @@ export default {
 <style scoped>
 .c-navigation {
   background: #101d27;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.c-navigation__left,
+.c-navigation__grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .c-navigation__list {
   list-style: none;
-  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 0 1rem;
   margin: 0;
 }
 
 .c-navigation__list-item {
-  font-size: 14px;
+  padding: 0.5rem 0.5rem;
 }
 
 .c-navigation__link {
   white-space: nowrap;
   text-decoration: none;
   width: 100%;
-  color: #9b9b9b;
+  color: white;
   font-weight: 600;
   text-decoration: uppercase;
-  padding: 0 1rem;
-  line-height: 2;
+  padding: 0.5rem 1rem;
+  line-height: 1.5;
   display: inline-block;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 300;
+  background-color: #161e2e;
 }
 
 .c-navigation__link.router-link-active {
   color: #02d473;
+}
+
+.user {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
 @media screen and (min-width: 640px) {

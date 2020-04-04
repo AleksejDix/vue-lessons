@@ -27,6 +27,8 @@ html {
   box-sizing: border-box;
   height: 100%;
   color: #9b9b9b;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 *,
@@ -52,6 +54,13 @@ body {
   min-height: 100%;
 }
 
+.container {
+  max-width: 1280px;
+  width: 100%;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -61,12 +70,11 @@ body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Inter var, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  height: 100%;
-  overflow: hidden;
 }
 
 .main {

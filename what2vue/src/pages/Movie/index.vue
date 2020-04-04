@@ -25,7 +25,7 @@
             </div>
           </div>
         </div>
-        <div class="px-2">
+        <div>
           <h1 class="movie__title">{{ movie.title }}</h1>
           <button class="button" @click="toggleFavorite">
             {{ isFavorite ? 'remove from' : 'add to' }} favorites
@@ -164,7 +164,7 @@ export default {
     font-size: 3rem;
   }
   .offset {
-    transform: translateY(-300px);
+    transform: translateY(-200px);
   }
 
   .preview {
@@ -177,11 +177,6 @@ export default {
 
   .video {
     width: 73%;
-  }
-
-  .container {
-    max-width: 90%;
-    margin: 0 auto;
   }
 
   .banner {

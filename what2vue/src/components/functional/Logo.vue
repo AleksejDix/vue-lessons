@@ -3,17 +3,16 @@
     <img
       class="c-logo"
       alt="logo"
-      src="https://www.themoviedb.org/assets/2/v4/logos/312x276-primary-green-74212f6247252a023be0f02a5a45794925c3689117da9d20ffe47742a665c518.png"
+      src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
     />
   </router-link>
 </template>
 
 <style scoped>
 .c-logo {
-  height: 100px;
-  width: 100px;
+  height: 32px;
+  width: 246.32px;
   object-fit: contain;
   background-color: #101d27;
-  padding: 20px;
 }
 </style>
