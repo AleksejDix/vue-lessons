@@ -97,7 +97,7 @@ export default {
       }
     },
     async getFirstVideo() {
-      const response = await api.movieVideo.index()(this.id)
+      const response = await api.movieVideo.index(this.id)
       const [firstVideo] = response.data.results
       if (!firstVideo) return
       if (!firstVideo.key) return

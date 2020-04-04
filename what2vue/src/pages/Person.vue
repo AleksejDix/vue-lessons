@@ -47,11 +47,11 @@ export default {
       this.person = response.data
     },
     async getMovies() {
-      const response = await api.personMovie.index()(this.id)
+      const response = await api.personMovie.index(this.id)
       this.movies = response.data.cast
     },
     async getPersonImages() {
-      const response = await api.personImages.index()(this.id)
+      const response = await api.personImages.index(this.id)
       this.images = response.data.profiles
     }
   }
