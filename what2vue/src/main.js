@@ -2,6 +2,8 @@ import Vue from 'vue'
 import router from '@/plugins/router'
 import store from '@/plugins/vuex'
 import '@/plugins/composition-api'
+import '@/directives'
+import '@/assets/css/index.css'
 import App from '@/App'
 
 new Vue({

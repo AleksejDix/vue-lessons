@@ -1,5 +1,5 @@
 <template>
-  <ul class="list-reset movies__list">
+  <ul class="movies__list">
     <li v-for="movie in list" :key="movie.id" class="movies__list-item">
       <MovieItem :movie="movie" />
     </li>

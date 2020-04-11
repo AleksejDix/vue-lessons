@@ -19,3 +19,25 @@ yarn run build
 ```
 yarn run lint
 ```
+
+## What do we use
+
+### VUEX
+
+### xState 
+
+### Vue Router
+
+### Tailwind.css
+
+### Tailwind custom forms
+
+https://tailwindcss-custom-forms.netlify.com/
+
+### PurgeCSS
+
+
+## Tasks
+
+- Extract Movie Quality Indicator as functional component
+- Extract Movie Quality Indicator as functional component

@@ -1,0 +1,7 @@
+.owl > * + * {
+  margin-top: 2rem;
+}
+
+.owl-x > * + * {
+  margin-left: 1rem;
+}

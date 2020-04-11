@@ -16,6 +16,7 @@ const withID = id => x => x.id === id
 const wihtoutID = id => x => x.id !== id
 
 export default new Vuex.Store({
+  strict: true,
   plugins: [vuexPersist.plugin],
   state: {
     favorites: []

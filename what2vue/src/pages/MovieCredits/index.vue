@@ -1,6 +1,6 @@
 <template>
   <section>
-    <ul class="list-reset credits">
+    <ul class="grid gap-8 credits">
       <li v-for="person in creditsType" :key="person.credit_id">
         <Person :person="person" />
       </li>
@@ -43,8 +43,6 @@ export default {
 
 <style scoped>
 .credits {
-  display: grid;
-  grid-gap: 32px;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 }
 </style>

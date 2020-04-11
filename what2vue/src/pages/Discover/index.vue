@@ -1,24 +1,18 @@
 <template>
-  <section class="container owl py-2">
+  <section class="max-w-7xl mx-auto sm:px-6 lg:px-8 owl">
     <header class="flex space-between">
       <h1>Discover</h1>
       {{ total }}
     </header>
     <div class="filter">
       <form class="flex owl-x" @submit.prevent="submit">
-        <div>
-          <select v-model="sort_by" name="sort_by">
-            <option
-              v-for="option in sort_options"
-              :key="option.value"
-              :value="option.value"
-            >
-              {{ option.name }}
-            </option>
-          </select>
-        </div>
-        <div v-if="genres_options.length > 0">
-          <select v-model="with_genres" name="with_genres">
+        <label v-if="genres_options.length > 0" class="block">
+          <span class="text-gray-700">Genre</span>
+          <select
+            v-model="with_genres"
+            name="with_genres"
+            class="form-select block w-full mt-1"
+          >
             <option disabled value="">select genre</option>
             <option
               v-for="option in genres_options"
@@ -28,9 +22,32 @@
               {{ option.name }}
             </option>
           </select>
-        </div>
-        <div>
-          <select v-model="sort_order" name="sort_by">
+        </label>
+
+        <label class="block">
+          <span class="text-gray-700">Sort by</span>
+          <select
+            v-model="sort_by"
+            name="sort_by"
+            class="form-select block w-full mt-1"
+          >
+            <option
+              v-for="option in sort_options"
+              :key="option.value"
+              :value="option.value"
+            >
+              {{ option.name }}
+            </option>
+          </select>
+        </label>
+
+        <label class="block">
+          <span class="text-gray-700">Order</span>
+          <select
+            v-model="sort_order"
+            name="sort_by"
+            class="form-select block w-full mt-1"
+          >
             <option
               v-for="option in sort_order_options"
               :key="option.value"
@@ -39,7 +56,8 @@
               {{ option.name }}
             </option>
           </select>
-        </div>
+        </label>
+
         <button class="hidden">send</button>
       </form>
     </div>
@@ -169,9 +187,5 @@ export default {
 <style>
 .filter {
   padding: 1rem 0;
-}
-
-.hidden {
-  display: none;
 }
 </style>

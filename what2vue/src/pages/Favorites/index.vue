@@ -1,5 +1,5 @@
 <template>
-  <section class="owl py-2">
+  <section class="max-w-7xl mx-auto sm:px-6 lg:px-8 owl">
     <header class="px-2 flex space-between">
       <h1>Favorites</h1>
     </header>

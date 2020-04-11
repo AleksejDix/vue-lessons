@@ -1,0 +1,5 @@
+@tailwind  components;
+
+@import './owl.css';
+@import './loader.css';
+@import './button.css';

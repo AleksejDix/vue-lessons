@@ -1,6 +1,6 @@
 <template>
-  <section class="container owl py-2">
-    <ul class="list-reset owl">
+  <section class="max-w-7xl mx-auto sm:px-6 lg:px-8 owl">
+    <ul class="owl">
       <li v-for="category in categories" :key="category.id">
         <CategoryItem :category="category" />
       </li>

@@ -1,20 +1,19 @@
 <template>
-  <section v-if="person">
-    <header class="px-2 py-2">
+  <section v-if="person" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <header>
       <h1>{{ person.name }}</h1>
     </header>
-    <div class="container">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="grid">
-        <div class="person">
+        <div class="w-64">
           <Player
             v-if="images.length > 0"
             v-model="images"
             controls
-            auto
-            :speed="3000"
+            :speed="5000"
           >
             <template
-              v-slot:default="{
+              #default="{
                 things,
                 some,
                 total,
@@ -22,7 +21,7 @@
               }"
             >
               <div v-if="some">
-                <div class="p-2">
+                <div>
                   <transition name="fade" mode="out-in">
                     <ResponsiveImage
                       :key="
@@ -45,6 +44,8 @@
       </div>
     </div>
 
+    <Fetch :apicall="apicallmovies" />
+
     <MovieList :list="movies" />
   </section>
 </template>
@@ -53,13 +54,15 @@
 import MovieList from '@/components/MovieList'
 import Player from '@/components/renderless/Player'
 import ResponsiveImage from '@/components/ResponsiveImage'
+import Fetch from '@/components/renderless/Fetch'
 
 import api from '@/api'
 export default {
   components: {
     MovieList,
     Player,
-    ResponsiveImage
+    ResponsiveImage,
+    Fetch
   },
   data() {
     return {
@@ -75,6 +78,7 @@ export default {
     this.getPersonImages()
   },
   methods: {
+    apicallmovies: () => () => api.personMovies(this.$route.params.id),
     async getMovies() {
       const response = await api.personMovies.index(this.id)
       this.movies = response.cast
@@ -91,8 +95,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.person {
-  width: 320px;
-}
-</style>
+<style></style>

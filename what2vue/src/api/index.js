@@ -10,6 +10,7 @@ import personMovies from '@/api/repos/personMovies'
 import personImages from '@/api/repos/personImages'
 import requestToken from '@/api/repos/requestToken'
 import accessToken from '@/api/repos/accessToken'
+import searchMulti from '@/api/repos/searchMulti'
 
 const api = {
   category,
@@ -23,6 +24,7 @@ const api = {
   personMovies,
   personImages,
   requestToken,
-  accessToken
+  accessToken,
+  searchMulti
 }
 export default api

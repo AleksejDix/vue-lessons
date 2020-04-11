@@ -44,6 +44,11 @@ export default [
     name: 'person'
   },
   {
+    path: '/profile',
+    component: () => import('@/pages/Profile'),
+    name: 'profile'
+  },
+  {
     path: '/404',
     name: '404',
     component: () => import('@/pages/_404')
