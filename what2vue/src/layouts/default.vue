@@ -2,9 +2,11 @@
   <div>
     <div class="bg-gray-800 pb-32">
       <nav class="bg-gray-800">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="">
           <div class="border-b border-gray-700 border-red">
-            <div class="flex items-center justify-between h-16 px-4 sm:px-0">
+            <div
+              class="max-w-6xl mx-auto flex items-center justify-between h-16 px-4 sm:px-0 sm:px-6 lg:px-8"
+            >
               <div class="flex items-center">
                 <div class="flex-shrink-0">
                   <AppLogo />
@@ -69,12 +71,12 @@
                           <a
                             href="#"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            >Profile</a
-                          >
-                          <router-link
+                            >Profile
+                          </a>
+                          <a
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             :to="{ name: 'favorites' }"
-                            >Favorites{{ favoritesCount }}</router-link
+                            >Favorites{{ favoritesCount }}</a
                           >
                           <a
                             href="#"
@@ -133,25 +135,24 @@
           @close="navClose"
         />
       </nav>
-      <header class="py-4">
-        <!-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="py-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 class="text-3xl leading-9 font-bold text-white">
             What 2 Vue Workshop App
           </h1>
-        </div> -->
+        </div>
       </header>
     </div>
     <main class="-mt-32">
-      <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
-        <!-- Replace with your content -->
-
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-white rounded-lg shadow px-4 py-6 sm:px-4">
           <slot></slot>
         </div>
-
-        <!-- /End replace -->
       </div>
     </main>
+    <div v-if="$slots.stickybanner" class="pb-24">
+      <slot name="stickybanner"></slot>
+    </div>
   </div>
 </template>
 
@@ -194,6 +195,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.$slots)
     const cats = api.category.index()
     const catLinks = cats.map(({ name: title, id }) => ({
       title,
@@ -237,24 +239,4 @@ export default {
     }
   }
 }
-
-// <div class="pt-4 pb-3 border-t border-gray-700 ">
-//       <div class="flex items-center px-5">
-//         <div class="flex-shrink-0">
-//           <img
-//             class="h-10 w-10 rounded-full"
-//             src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-//             alt=""
-//           />
-//         </div>
-//         <div class="ml-3">
-//           <div class="text-base font-medium leading-none text-white">
-//             Tim Apple
-//           </div>
-//           <div class="mt-1 text-sm font-medium leading-none text-gray-400">
-//             tim@example.com
-//           </div>
-//         </div>
-//       </div>
-//     </div>
 </script>

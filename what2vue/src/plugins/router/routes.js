@@ -49,6 +49,16 @@ export default [
     name: 'profile'
   },
   {
+    path: '/dashboard',
+    component: () => import('@/pages/Dashboard'),
+    name: 'dashboard'
+  },
+  {
+    path: '/about',
+    component: () => import('@/pages/About'),
+    name: 'about'
+  },
+  {
     path: '/404',
     name: '404',
     component: () => import('@/pages/_404')

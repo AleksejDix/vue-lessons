@@ -11,6 +11,8 @@ import personImages from '@/api/repos/personImages'
 import requestToken from '@/api/repos/requestToken'
 import accessToken from '@/api/repos/accessToken'
 import searchMulti from '@/api/repos/searchMulti'
+import countries from '@/api/repos/countries'
+import users from '@/api/repos/users'
 
 const api = {
   category,
@@ -25,6 +27,8 @@ const api = {
   personImages,
   requestToken,
   accessToken,
-  searchMulti
+  searchMulti,
+  countries,
+  users
 }
 export default api

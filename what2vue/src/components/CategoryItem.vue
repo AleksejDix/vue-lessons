@@ -4,7 +4,7 @@
       <h2 class="uppercase font-bold ">{{ category.name }}</h2>
       <div>
         <router-link
-          class="button"
+          class="app-button"
           :to="{
             name: 'category',
             params: {

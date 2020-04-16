@@ -1,20 +1,20 @@
+<template>
+  <div>
+    <slot :select="select" :selected="selected"></slot>
+  </div>
+</template>
+
 <script>
 export default {
   data() {
     return {
-      selected: 0
+      selected: ''
     }
   },
   methods: {
     select(value) {
       this.selected = value
     }
-  },
-  render() {
-    return this.$scopedSlots.default({
-      selected: this.selected,
-      select: this.select
-    })
   }
 }
 </script>

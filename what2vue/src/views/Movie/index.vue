@@ -27,7 +27,7 @@
         </div>
         <div>
           <h1 class="movie__title">{{ movie.title }}</h1>
-          <button class="button" @click="toggleFavorite">
+          <button class="app-button" @click="toggleFavorite">
             {{ isFavorite ? 'remove from' : 'add to' }} favorites
           </button>
           <div>
