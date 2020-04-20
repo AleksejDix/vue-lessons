@@ -1,0 +1,15 @@
+<!-- implementing a fake render function -->
+
+<div id="root"></div>
+
+<script>
+  function createElement(tag, attributes, children) {
+    // implement function
+  }
+
+  const rootEl = document.querySelector('#root')
+
+  const divEl = createElement('div', { class: 'container' }, 'Hello World')
+
+  rootEl.append(divEl)
+</script>

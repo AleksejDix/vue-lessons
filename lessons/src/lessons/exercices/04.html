@@ -1,0 +1,24 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="root"></div>
+
+<script>
+  // create AppContainer Component
+
+  // create AppMessage Component
+
+  // https://vuejs.org/v2/guide/components.html#Base-Example
+  // https://vuejs.org/v2/guide/components.html#Organizing-Components
+
+  const app = new Vue({
+    el: '#root',
+    // register  2 LOCAL components
+    // https://vuejs.org/v2/guide/components-registration.html
+    template: `
+      <AppContainer>
+        <AppMessage>Hello</AppMessage>
+        <AppMessage>World</AppMessage>
+      </AppContainer>
+    `,
+  })
+</script>

@@ -1,0 +1,11 @@
+<!-- rendering div with JavaScript -->
+
+<div id="root"></div>
+
+<script type="module">
+  const rootEl = document.querySelector('#root')
+  const divEl = document.createElement('div')
+  divEl.classList.add('container')
+  divEl.textContent = 'Hello World'
+  rootEl.append(divEl)
+</script>

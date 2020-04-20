@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="root"></div>
+
+<script>
+  Vue.component('UserForm', {
+    template: `
+      <form>
+        <div>
+          <label>Username:</label>
+          <input type="text" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    `
+  })
+
+  new Vue({
+    template: `<UserForm/>`
+  }).$mount('#root')
+</script>
