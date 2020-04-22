@@ -1,0 +1,34 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="root"></div>
+
+<script>
+  const Hallo = {
+    template: `<span>Hallo</span>`,
+  }
+
+  const World = {
+    template: `<span>World</span>`,
+  }
+
+  const AppContainer = {
+    template: `<div class="container">
+      <slot/>
+    </div>`,
+  }
+
+  const app = new Vue({
+    el: '#root',
+    components: {
+      AppContainer,
+      Hallo,
+      World,
+    },
+    template: `
+      <AppContainer>
+        <Hallo/>
+        <World/>
+      </AppContainer>
+    `,
+  })
+</script>

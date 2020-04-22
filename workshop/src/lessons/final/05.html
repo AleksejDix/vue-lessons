@@ -1,0 +1,22 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="root"></div>
+
+<script>
+  new Vue({
+    template: `
+      <form ref="form" @submit.prevent="send">
+        <div>
+          <label>Username:</label>
+          <input type="text" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    `,
+    methods: {
+      send(event) {
+        alert(event.target[0].value)
+      },
+    },
+  }).$mount('#root')
+</script>
