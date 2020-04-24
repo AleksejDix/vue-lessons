@@ -1,4 +1,4 @@
-import Home from '@/pages/Home'
+import Home from '@/views/Home'
 
 export default [
   {
@@ -8,60 +8,60 @@ export default [
   },
   {
     path: '/favorites',
-    component: () => import('@/pages/Favorites'),
+    component: () => import('@/views/Favorites/'),
     name: 'favorites'
   },
   {
     path: '/movies/discover',
-    component: () => import('@/pages/Discover'),
+    component: () => import('@/views/Discover/'),
     name: 'discover'
   },
   {
     path: '/category/:id/',
-    component: () => import('@/pages/Category'),
+    component: () => import('@/views/Category/'),
     name: 'category'
   },
   {
     path: '/movies/:id/',
-    component: () => import('@/pages/Movie'),
+    component: () => import('@/views/Movie/'),
     children: [
       {
         path: '',
         alias: 'cast',
-        component: () => import('@/pages/MovieCredits'),
+        component: () => import('@/views/MovieCredits/'),
         name: 'cast'
       },
       {
         path: 'crew',
-        component: () => import('@/pages/MovieCredits'),
+        component: () => import('@/views/MovieCredits/'),
         name: 'crew'
       }
     ]
   },
   {
     path: '/person/:id/',
-    component: () => import('@/pages/Person'),
+    component: () => import('@/views/Person/'),
     name: 'person'
   },
   {
     path: '/profile',
-    component: () => import('@/pages/Profile'),
+    component: () => import('@/views/Profile/'),
     name: 'profile'
   },
   {
     path: '/dashboard',
-    component: () => import('@/pages/Dashboard'),
+    component: () => import('@/views/Dashboard/'),
     name: 'dashboard'
   },
   {
     path: '/about',
-    component: () => import('@/pages/About'),
+    component: () => import('@/views/About/'),
     name: 'about'
   },
   {
     path: '/404',
     name: '404',
-    component: () => import('@/pages/_404')
+    component: () => import('@/views/_404/')
   },
   {
     path: '*',
