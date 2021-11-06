@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="add">
-      <input class="border border-black" type="text" v-model="fruit" />
+      <input v-model="fruit" class="border border-black" type="text" />
       <button>add item</button>
     </form>
     {{ counter }}
@@ -26,7 +26,7 @@ export default {
     }
   },
   watch: {
-    list(value, oldValue) {
+    list(value) {
       if (value.length === 0) {
         console.log('you have no fruits')
       }

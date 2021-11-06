@@ -1,6 +1,15 @@
 <template>
   <header
-    class="bg-gray-800 h-16 flex items-center border-black border-b sticky top-0 z-10"
+    class="
+      bg-gray-800
+      h-16
+      flex
+      items-center
+      border-black border-b
+      sticky
+      top-0
+      z-10
+    "
   >
     <nav class="px-6 text-white">
       <router-link class="flex items-center" :to="{ name: 'home' }">

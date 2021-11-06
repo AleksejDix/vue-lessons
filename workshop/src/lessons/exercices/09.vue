@@ -5,9 +5,7 @@
     <ul>
       <li>
         {{ fruits }}
-        <button class="bg-blue-600 rounded">
-          eat
-        </button>
+        <button class="bg-blue-600 rounded">eat</button>
       </li>
     </ul>
   </div>
@@ -28,7 +26,7 @@ export default {
     add() {
       // write the add function
     },
-    remove(item) {
+    remove() {
       // write the delete function
     },
   },

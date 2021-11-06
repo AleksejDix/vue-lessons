@@ -1,10 +1,8 @@
 <template>
   <div v-if="lesson && lesson.instructions">
-    <component class="prose" :is="lesson.instructions.module.default" />
+    <component :is="lesson.instructions.module.default" class="prose" />
   </div>
-  <div v-else>
-    Listen to the Teacher
-  </div>
+  <div v-else>Listen to the Teacher</div>
 </template>
 
 <script>

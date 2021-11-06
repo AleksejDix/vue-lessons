@@ -3,7 +3,7 @@
     <div>
       <label>
         <span>Username:</span>
-        <input class="border border-black" type="text" v-model="value" />
+        <input v-model="value" class="border border-black" type="text" />
       </label>
       <div :style="{ color: 'red' }">{{ error }}</div>
     </div>

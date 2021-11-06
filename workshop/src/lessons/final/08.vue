@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input class="border border-black" type="text" v-model="fruit" />
+    <input v-model="fruit" class="border border-black" type="text" />
     <button @click="add">add item</button>
     <ul>
       <li v-for="item in list" :key="item">

@@ -15,7 +15,16 @@
         }"
       ></div>
       <div
-        class="group rounded bg-gray-800 px-6 py-4 hover:bg-black flex items-center"
+        class="
+          group
+          rounded
+          bg-gray-800
+          px-6
+          py-4
+          hover:bg-black
+          flex
+          items-center
+        "
       >
         <div class="flex-1">
           <router-link
@@ -29,12 +38,30 @@
           >
             <h2 class="flex items-center">
               <div
-                class="rounded-full group-hover:bg-green-100 group-hover:bg-green-800 border-2 w-6 h-6 flex items-center justify-center text-xs bg-gray-800 relative z-10"
+                class="
+                  rounded-full
+                  group-hover:bg-green-100 group-hover:bg-green-800
+                  border-2
+                  w-6
+                  h-6
+                  flex
+                  items-center
+                  justify-center
+                  text-xs
+                  bg-gray-800
+                  relative
+                  z-10
+                "
               >
                 {{ lesson.id }}
               </div>
               <span
-                class="pl-6 group-hover:text-green-500 font-bold text-white text-xl"
+                class="
+                  pl-6
+                  group-hover:text-green-500
+                  font-bold
+                  text-white text-xl
+                "
               >
                 {{ lesson.title }}
               </span>
@@ -64,9 +91,7 @@
                   d="M20.59 12l-3.3-3.3a1 1 0 1 1 1.42-1.4l4 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-1.42-1.4l3.3-3.3zM3.4 12l3.3 3.3a1 1 0 0 1-1.42 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.42 1.4L3.4 12zm7.56 8.24a1 1 0 0 1-1.94-.48l4-16a1 1 0 1 1 1.94.48l-4 16z"
                 />
               </svg>
-              <div class="p-2">
-                Exercice
-              </div>
+              <div class="p-2">Exercice</div>
             </router-link>
           </div>
           <div v-if="lesson.final" class="p-2">
@@ -91,9 +116,7 @@
                   d="M11 20v-2.08a6 6 0 0 1-4.24-3A4.02 4.02 0 0 1 2 11V6c0-1.1.9-2 2-2h2c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2h2a2 2 0 0 1 2 2v5a4 4 0 0 1-4.76 3.93A6 6 0 0 1 13 17.92V20h4a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2h4zm6.92-7H18a2 2 0 0 0 2-2V6h-2v6c0 .34-.03.67-.08 1zM6.08 13A6.04 6.04 0 0 1 6 12V6H4v5a2 2 0 0 0 2.08 2zM8 4v8a4 4 0 1 0 8 0V4H8z"
                 />
               </svg>
-              <div class="p-2">
-                Final
-              </div>
+              <div class="p-2">Final</div>
             </router-link>
           </div>
         </div>

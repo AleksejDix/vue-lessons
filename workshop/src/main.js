@@ -14,7 +14,7 @@ Vue.component('inlineCode', {
 })
 
 Vue.component('wrapper', {
-  name: 'wrapper',
+  name: 'Wrapper',
   render(h) {
     return h('div', [this.$slots.default])
   },

@@ -1,9 +1,9 @@
 <template>
-  <form >
+  <form>
     <div>
       <label>
         <span>Username:</span>
-        <input type="text"/>
+        <input type="text" />
       </label>
       <div :style="{ color: 'red' }">{{ error }}</div>
     </div>

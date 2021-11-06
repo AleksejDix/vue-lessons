@@ -1,5 +1,5 @@
 <template>
-  <div class="text-black" v-if="lesson">
+  <div v-if="lesson" class="text-black">
     <template v-if="isComponent">
       <component :is="lesson[$route.name].module.default" />
     </template>
