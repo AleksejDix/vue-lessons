@@ -14,10 +14,13 @@
     >
     </slot>
     <slot name="controls">
-      <div v-if="controls">
-        {{ current + 1 }} / {{ total }}
-        <button @click="back">back</button>
-        <button @click="forward">next</button>
+      <div
+        v-if="controls"
+        class="flex items-center gap-2 py-2 w-full justify-between"
+      >
+        <button class="app-button" @click="back">back</button>
+        <span> {{ current + 1 }} / {{ total }} </span>
+        <button class="app-button" @click="forward">next</button>
       </div>
     </slot>
   </div>
@@ -27,25 +30,25 @@
 export default {
   model: {
     prop: 'things',
-    event: 'update'
+    event: 'update',
   },
   props: {
     auto: {
       type: Boolean,
-      default: false
+      default: false,
     },
     speed: {
       type: [Number],
-      default: 1000
+      default: 1000,
     },
     things: {
       type: Array,
-      required: true
+      required: true,
     },
     controls: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -54,7 +57,7 @@ export default {
       current: 0,
       isPaused: false,
       isPlaying: false,
-      isStoped: true
+      isStoped: true,
     }
   },
   computed: {
@@ -72,7 +75,7 @@ export default {
     },
     isOnHold() {
       return this.isPaused || this.interrupted || this.focussed
-    }
+    },
   },
   mounted() {
     if (this.auto) {
@@ -118,10 +121,10 @@ export default {
     stop() {
       clearInterval(this.autoPlayer)
       this.isPlaying = false
-    }
+    },
   },
   destroy() {
     this.stop()
-  }
+  },
 }
 </script>

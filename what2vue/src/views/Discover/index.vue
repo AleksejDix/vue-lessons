@@ -1,11 +1,13 @@
 <template>
-  <section class="max-w-7xl mx-auto sm:px-6 lg:px-8 owl">
-    <header class="flex space-between">
-      <h1>Discover</h1>
-      {{ total }}
+  <section class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid gap-2">
+    <portal to="title">{{ $route.name }}</portal>
+    <header class="flex justify-between">
+      <div class="flex justify-between">
+        <h2 class="uppercase font-bold">{{ $route.name }} • {{ total }}</h2>
+      </div>
     </header>
-    <div class="filter">
-      <form class="flex owl-x" @submit.prevent="submit">
+    <div class="px-2">
+      <form class="flex gap-2" @submit.prevent="submit">
         <label v-if="genres_options.length > 0" class="block">
           <span class="text-gray-700">Genre</span>
           <select
@@ -90,12 +92,12 @@ export default {
       sort_options: [
         { value: 'popularity', name: 'Popularity' },
         { value: 'revenue', name: 'Revenue' },
-        { value: 'vote_count', name: 'Rating' }
+        { value: 'vote_count', name: 'Rating' },
       ],
       sort_order_options: [
         { value: 'asc', name: 'low to high' },
-        { value: 'desc', name: 'hight to low' }
-      ]
+        { value: 'desc', name: 'hight to low' },
+      ],
     }
   },
   computed: {
@@ -107,9 +109,9 @@ export default {
         page: this.page,
         with_genres: this.with_genres || '',
         sort_by: this.sort_by,
-        sort_order: this.sort_order
+        sort_order: this.sort_order,
       }
-    }
+    },
   },
   watch: {
     'query.page'(next, prev) {
@@ -117,17 +119,17 @@ export default {
         this.loadMore(next)
       }
     },
-    async 'query.sort_order'(next, prev) {
+    'query.sort_order'(next, prev) {
       if (next !== prev) {
         this.reset()
       }
     },
-    async 'query.sort_by'(next, prev) {
+    'query.sort_by'(next, prev) {
       if (next !== prev) {
         this.reset(next)
       }
     },
-    async 'query.with_genres'(next, prev) {
+    'query.with_genres'(next, prev) {
       if (next !== prev) {
         this.reset(next)
       }
@@ -139,7 +141,7 @@ export default {
         this.sort_by = next.sort_by
         this.sort_order = next.sort_order
       }
-    }
+    },
   },
   async mounted() {
     this.genres_options = await this.getGenres()
@@ -147,6 +149,9 @@ export default {
   },
   destroyed() {
     this.movies = []
+  },
+  created() {
+    this.$emit('updateLayout', 'OffsetLayout')
   },
   methods: {
     async getGenres() {
@@ -179,13 +184,7 @@ export default {
     updateQuery(query) {
       const path = this.$route.name
       this.$router.push({ path, query })
-    }
-  }
+    },
+  },
 }
 </script>
-
-<style>
-.filter {
-  padding: 1rem 0;
-}
-</style>

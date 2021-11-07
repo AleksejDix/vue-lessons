@@ -1,8 +1,8 @@
 <template>
-  <section class="max-w-7xl mx-auto sm:px-6 lg:px-8 owl">
-    <header class="px-2 flex space-between">
-      <h1>{{ name }}</h1>
-      <span>{{ total }}</span>
+  <section class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid gap-4">
+    <portal to="title">{{ name }}</portal>
+    <header class="flex justify-between">
+      <h2 class="uppercase font-bold">{{ name }} • {{ total }}</h2>
     </header>
     <div v-if="hasMovies">
       <MovieList :list="movies" />
@@ -20,12 +20,15 @@ import MovieList from '@/components/MovieList'
 import IntersectionObserver from '@/components/IntersectionObserver'
 
 export default {
-  components: { MovieList, IntersectionObserver },
+  components: {
+    MovieList,
+    IntersectionObserver,
+  },
   data() {
     return {
       page: 1,
       movies: [],
-      total: 0
+      total: 0,
     }
   },
   computed: {
@@ -34,16 +37,14 @@ export default {
       return this.movies.length > 0
     },
     name() {
-      if (!categoy) return
-      if (!categoy.name) return
       const categoy = api.category.show(this.$route.params.id)
       return categoy.name
     },
     query() {
       return {
-        page: this.page
+        page: this.page,
       }
-    }
+    },
   },
   watch: {
     async 'query.page'(next, prev) {
@@ -60,10 +61,13 @@ export default {
         this.updateQuery(this.query)
         this.movies = this.movies.concat(await this.getCategory())
       }
-    }
+    },
   },
   async mounted() {
     this.movies = await this.getCategory()
+  },
+  created() {
+    this.$emit('updateLayout', 'OffsetLayout')
   },
   destroyed() {
     this.movies = []
@@ -82,7 +86,7 @@ export default {
     },
     nextPage() {
       this.page++
-    }
-  }
+    },
+  },
 }
 </script>

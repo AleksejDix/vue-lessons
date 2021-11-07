@@ -9,23 +9,23 @@ const v3 = axios.create({
   baseURL,
   params: {
     api_key,
-    language: 'en-US'
-  }
+    language: 'en-US',
+  },
 })
 
 // before a request is made start the nprogress
-v3.interceptors.request.use(config => {
+v3.interceptors.request.use((config) => {
   NProgress.start()
   return config
 })
 
 // before a response is returned stop nprogress
 v3.interceptors.response.use(
-  response => {
+  (response) => {
     NProgress.done()
     return response.data
   },
-  error => {
+  (error) => {
     // redirect to 404
     if (error.response.status === 404) {
       router.push({ name: 404 })

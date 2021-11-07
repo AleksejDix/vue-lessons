@@ -11,19 +11,19 @@
 <script>
 import api from '@/api'
 
-import Person from '@/components/functional/Person'
+import Person from '@/components/Person'
 export default {
   components: { Person },
   data() {
     return {
       id: this.$route.params.id,
-      credits: {}
+      credits: {},
     }
   },
   computed: {
     creditsType() {
       return this.credits[this.$route.name]
-    }
+    },
   },
   mounted() {
     this.getCredits()
@@ -33,11 +33,11 @@ export default {
       const response = await api.movieCredits.index(this.id)
       this.credits = {
         crew: response.crew,
-        cast: response.cast
+        cast: response.cast,
       }
       return response
-    }
-  }
+    },
+  },
 }
 </script>
 

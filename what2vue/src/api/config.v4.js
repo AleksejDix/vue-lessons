@@ -8,31 +8,25 @@ export const Bearer = `eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MzU4ZTgwZGM5NjEzNjNlNTM5
 
 const v4 = axios.create({
   baseURL,
-  headers: {
-    common: {
-      Authorization: `Bearer ${Bearer}`,
-      'Content-Type': 'application/json;charset=utf-8'
-    }
-  },
   params: {
     api_key,
-    language: 'en-US'
-  }
+    language: 'en-US',
+  },
 })
 
 // before a request is made start the nprogress
-v4.interceptors.request.use(config => {
+v4.interceptors.request.use((config) => {
   NProgress.start()
   return config
 })
 
 // before a response is returned stop nprogress
 v4.interceptors.response.use(
-  response => {
+  (response) => {
     NProgress.done()
     return response.data
   },
-  error => {
+  (error) => {
     // redirect to 404
     if (error.response.status === 404) {
       router.push({ name: 404 })

@@ -12,7 +12,8 @@ import requestToken from '@/api/repos/requestToken'
 import accessToken from '@/api/repos/accessToken'
 import searchMulti from '@/api/repos/searchMulti'
 import countries from '@/api/repos/countries'
-import users from '@/api/repos/users'
+import account from '@/api/repos/account'
+import session from '@/api/repos/session'
 
 const api = {
   category,
@@ -29,6 +30,7 @@ const api = {
   accessToken,
   searchMulti,
   countries,
-  users
+  account,
+  session,
 }
 export default api

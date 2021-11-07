@@ -8,11 +8,11 @@ export default {
     const params = {
       sort_by: `${sort_by}.${sort_order}`,
       page,
-      with_genres
+      with_genres,
     }
 
     return api.v3.get(`discover/movie`, {
-      params
+      params,
     })
-  }
+  },
 }

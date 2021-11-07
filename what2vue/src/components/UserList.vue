@@ -1,6 +1,6 @@
 <template>
   <Selector>
-    <template #default="{select, selected}">
+    <template #default="{ select, selected }">
       <div>
         <div v-if="Number.isInteger(selected)">
           <h1 class="py-2 font-bold">Admins</h1>
@@ -48,13 +48,13 @@
 import Selector from '@/components/Selector'
 export default {
   components: {
-    Selector
+    Selector,
   },
   props: {
     users: {
       type: Array,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 }
 </script>

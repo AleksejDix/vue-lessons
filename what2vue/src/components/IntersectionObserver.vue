@@ -8,12 +8,12 @@ export default {
   props: {
     options: {
       type: Object,
-      default: () => ({})
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      observer: null
+      observer: null,
     }
   },
   mounted() {
@@ -28,6 +28,6 @@ export default {
   },
   destroyed() {
     this.observer.disconnect()
-  }
+  },
 }
 </script>

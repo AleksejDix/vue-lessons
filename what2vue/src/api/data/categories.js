@@ -1,18 +1,18 @@
 export default [
   {
     id: 'upcoming',
-    name: 'Upcoming'
+    name: 'Upcoming',
   },
   {
     id: 'now_playing',
-    name: 'Now Playing'
+    name: 'Now Playing',
   },
   {
     id: 'top_rated',
-    name: 'Top Rated'
+    name: 'Top Rated',
   },
   {
     id: 'popular',
-    name: 'Popular'
-  }
+    name: 'Popular',
+  },
 ]

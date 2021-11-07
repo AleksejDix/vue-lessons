@@ -5,8 +5,8 @@ export default {
       params: {
         query,
         page: 1,
-        include_adult: false
-      }
+        include_adult: false,
+      },
     })
-  }
+  },
 }

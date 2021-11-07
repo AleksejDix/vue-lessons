@@ -5,7 +5,7 @@
   >
     <img
       v-bind="$attrs"
-      class="absolute w-full left-0 right-0  top-0"
+      class="absolute w-full left-0 right-0 top-0"
       :src="src"
     />
   </div>
@@ -16,17 +16,17 @@ export default {
   props: {
     aspectRatio: {
       type: Number,
-      required: true
+      required: true,
     },
     src: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     percent() {
       return 100 / this.aspectRatio + '%'
-    }
-  }
+    },
+  },
 }
 </script>

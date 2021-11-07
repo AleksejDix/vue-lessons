@@ -1,22 +1,27 @@
 <template>
   <div v-if="movie">
     <div
-      class="banner"
+      class="banner flex items-center justify-center"
       :style="{
         backgroundColor: 'rgba(0, 0, 0, 0.55)',
-        backgroundImage: 'url(' + backgroundURL + ')'
+        backgroundImage: 'url(' + backgroundURL + ')',
       }"
-    ></div>
+    >
+      <div class="flex items-center justify-center h-32">
+        <h1 class="text-white text-5xl font-extralight">
+          {{ movie.title }}
+        </h1>
+      </div>
+    </div>
     <section class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="offset owl">
-        <div class="preview">
-          <div class="poster">
-            <img v-if="posterURL" class="poster__img" :src="posterURL" />
+      <div class="offset grid gap-2">
+        <div class="flex flex-col sm:flex-row">
+          <div class="poster order-2">
+            <img v-if="posterURL" class="w-full max-w-full" :src="posterURL" />
           </div>
-          <div class="video">
-            <div v-if="videoURL" class="ratio">
+          <div class="video order-1">
+            <div v-if="videoURL" class="aspect-w-16 aspect-h-9">
               <iframe
-                class="ratio-object"
                 :src="videoURL"
                 frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -25,14 +30,18 @@
             </div>
           </div>
         </div>
-        <div>
-          <h1 class="movie__title">{{ movie.title }}</h1>
-          <button class="app-button" @click="toggleFavorite">
-            {{ isFavorite ? 'remove from' : 'add to' }} favorites
-          </button>
-          <div>
-            <router-link :to="{ name: 'cast' }">cast</router-link>
-            <router-link :to="{ name: 'crew' }">crew</router-link>
+        <div class="px-4 sm:px-0">
+          <div class="flex gap-4 py-4">
+            <button class="app-button" @click="toggleFavorite">
+              {{ isFavorite ? 'remove from' : 'add to' }} favorites
+            </button>
+
+            <router-link class="app-button" :to="{ name: 'cast' }"
+              >cast</router-link
+            >
+            <router-link class="app-button" :to="{ name: 'crew' }"
+              >crew</router-link
+            >
           </div>
           <transition name="fade" mode="out-in">
             <router-view />
@@ -46,7 +55,7 @@
 <script>
 import api from '@/api'
 
-const getFirstVideo = id => async () => {
+const getFirstVideo = (id) => async () => {
   const response = await api.movieVideos.index(id)
   const [firstVideo] = response.results
   if (!firstVideo) return
@@ -61,7 +70,7 @@ export default {
       loaded: false,
       movie: '',
       video: '',
-      people: {}
+      people: {},
     }
   },
   computed: {
@@ -79,10 +88,13 @@ export default {
     backgroundURL() {
       if (!this.movie.backdrop_path) return
       return `https://image.tmdb.org/t/p/w1400_and_h450_face/${this.movie.backdrop_path}`
-    }
+    },
   },
   mounted() {
     this.getMoviePage()
+  },
+  created() {
+    this.$emit('updateLayout', 'SinglePageLayout')
   },
   methods: {
     toggleFavorite() {
@@ -96,59 +108,29 @@ export default {
     },
     getMoviePage() {
       this.loaded = false
-      const setMovie = movie => ((this.movie = movie), movie)
+      const setMovie = (movie) => ((this.movie = movie), movie)
 
-      const setVideo = video => {
+      const setVideo = (video) => {
         this.video = video
       }
 
       return this.getMovie()
         .then(setMovie)
         .then(getFirstVideo(this.id))
-        .then(response => {
+        .then((response) => {
           this.loaded = true
           setVideo(response)
           return response
         })
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped>
-.movie__title {
-  color: #f5f5f5;
-  font-size: 2rem;
-  line-height: 1.125;
-  text-align: center;
-}
-.ratio {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.5%;
-}
-
-.ratio-object {
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.flex {
-  display: flex;
-}
-
 .poster,
 .video {
   width: 100%;
-}
-.poster__img {
-  width: 100%;
-  max-width: 100%;
 }
 
 .preview {
@@ -160,19 +142,12 @@ export default {
 }
 
 @media (min-width: 640px) {
-  .movie__title {
-    font-size: 3rem;
-  }
   .offset {
     transform: translateY(-200px);
   }
 
-  .preview {
-    display: flex;
-  }
-
   .poster {
-    width: 27.5%;
+    width: 27.37%;
   }
 
   .video {
@@ -181,7 +156,7 @@ export default {
 
   .banner {
     background-color: #e5e5e5;
-    height: 500px;
+    height: 512px;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

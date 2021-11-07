@@ -1,5 +1,5 @@
 <template>
-  <ul class="movies__list">
+  <ul class="grid gap-8 movies__list grid-cols-5">
     <li v-for="movie in list" :key="movie.id" class="movies__list-item">
       <MovieItem :movie="movie" />
     </li>
@@ -7,22 +7,20 @@
 </template>
 
 <script>
-import MovieItem from '@/components/functional/MovieItem'
+import MovieItem from '@/components/MovieItem'
 export default {
   components: { MovieItem },
   props: {
     list: {
       type: Array,
-      default: () => []
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 
-<style>
+<style scoped>
 .movies__list {
-  display: grid;
-  grid-gap: 32px;
   grid-template-columns: repeat(auto-fill, minmax(171px, 1fr));
 }
 </style>

@@ -1,5 +1,4 @@
-@tailwind  components;
-
-@import './owl.css';
+@import 'tailwindcss/components';
+@import './h-scroller.css';
 @import './loader.css';
 @import './button.css';

@@ -1,11 +1,43 @@
 <template>
-  <div class="flex justify-center px-2 lg:justify-start">
+  <div class="flex justify-center px-2 lg:justify-start lg:max-w-xs">
     <div class="relative flex-1">
-      <form autocomplete="off" class="" @submit.prevent>
-        <div class="max-w-lg w-full lg:max-w-xs relative z-20">
-          <label title="search"
+      <div
+        v-if="isDropdownVisible"
+        class="absolute w-full z-10 left-0 top-0 pt-12 right-0 rounded-md bg-white shadow p-1"
+      >
+        <ul class="grid gap-1">
+          <li v-for="result in results" :key="result.id">
+            <router-link
+              :to="{
+                name: 'cast',
+                params: {
+                  id: result.id,
+                },
+              }"
+              class="flex gap-3 hover:bg-gray-400 p-2 bg-gray-200 rounded transition-all"
+              @click.native="open = false"
+            >
+              <div v-if="result.poster_path" class="w-1/5">
+                <img
+                  class="w-32 h-9 object-cover"
+                  :src="`https://image.tmdb.org/t/p/w342/${result.poster_path}`"
+                />
+              </div>
+              <div class="flex-1 leading-none">
+                <span class="font-medium">
+                  {{ result.title }}
+                </span>
+                <Badge>{{ result.vote_average }}</Badge>
+              </div>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <form autocomplete="off" @submit.prevent>
+        <div class="max-w-lg w-full relative">
+          <label title="search" class="w-full"
             ><span class="sr-only">Search</span>
-            <div class="relative">
+            <div class="relative z-20">
               <div
                 class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
               >
@@ -31,29 +63,24 @@
           </label>
         </div>
       </form>
-      <div
-        v-if="isDropdownVisible"
-        class="absolute w-full left-0 top-0 pt-12 right-0 z-10 rounded-md bg-white shadow p-4"
-      >
-        <ul v-for="result in results" :key="result.id">
-          <li>{{ result.original_title }}</li>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 import api from '@/api'
-// media_type
-// id
-// original_title
+import Badge from '@/components/Badge.vue'
+import debounce from 'lodash/debounce'
+
 export default {
+  components: {
+    Badge,
+  },
   data() {
     return {
       searchInput: '',
       results: [],
-      open: false
+      open: false,
     }
   },
   computed: {
@@ -66,8 +93,8 @@ export default {
       },
       set(value) {
         this.open = value
-      }
-    }
+      },
+    },
   },
   watch: {
     searchInput(n) {
@@ -78,14 +105,17 @@ export default {
       if (n.length === 0) {
         this.isDropdownVisible = false
       }
-    }
+    },
+  },
+  beforeMount() {
+    this.search = debounce(this.callSearchApi.bind(this), 1000)
   },
   methods: {
-    async search(query) {
+    async callSearchApi(query) {
       const response = await api.searchMulti.index({ query })
       this.results = response.results
       return response
-    }
-  }
+    },
+  },
 }
 </script>

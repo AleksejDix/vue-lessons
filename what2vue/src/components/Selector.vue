@@ -8,13 +8,13 @@
 export default {
   data() {
     return {
-      selected: ''
+      selected: '',
     }
   },
   methods: {
     select(value) {
       this.selected = value
-    }
-  }
+    },
+  },
 }
 </script>

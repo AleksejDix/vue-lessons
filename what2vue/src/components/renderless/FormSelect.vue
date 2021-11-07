@@ -1,44 +1,44 @@
 <script>
-const excludes = list => x => !list.includes(x)
+const excludes = (list) => (x) => !list.includes(x)
 
 const setCreate = (list, set) =>
   !list.length ? set : list.concat(set.filter(excludes(list)))
 
 const setDestroy = (list, set) => list.filter(excludes(set))
 
-const getIndex = (list, x) => list.findIndex(option => option.value === x)
+const getIndex = (list, x) => list.findIndex((option) => option.value === x)
 
 const getSubSet = (list, start, end) => {
   const i1 = getIndex(list, start)
   const i2 = getIndex(list, end)
   return list
     .slice(Math.min(i2, i1), Math.max(i2, i1) + 1)
-    .map(item => item.value)
+    .map((item) => item.value)
 }
 
 export default {
   model: {
     prop: 'selection',
     event: 'update',
-    memory: undefined
+    memory: undefined,
   },
   props: {
     selection: {
       type: [Array, String, Number],
-      required: true
+      required: true,
     },
     options: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     mode: {
       type: String,
-      default: 'single'
-    }
+      default: 'single',
+    },
   },
   data() {
     return {
-      selected: undefined
+      selected: undefined,
     }
   },
   computed: {
@@ -46,7 +46,7 @@ export default {
       return this.selected.length
         ? this.selected[this.selected.length - 1]
         : undefined
-    }
+    },
   },
   watch: {
     selected() {
@@ -61,8 +61,8 @@ export default {
           this.selected = ''
         }
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     select(option) {
@@ -78,7 +78,7 @@ export default {
         }
 
         if (includes) {
-          this.selected = this.selected.filter(x => x !== option.value)
+          this.selected = this.selected.filter((x) => x !== option.value)
         } else {
           this.selected.push(option.value)
         }
@@ -92,7 +92,7 @@ export default {
         return this.selected.includes(option.value)
       }
       return option.value === this.selected
-    }
+    },
   },
   render() {
     const { selected, select, isSelected, options, memory } = this
@@ -101,8 +101,8 @@ export default {
       select,
       isSelected,
       options,
-      memory
+      memory,
     })
-  }
+  },
 }
 </script>

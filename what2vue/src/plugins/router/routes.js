@@ -1,25 +1,26 @@
 import Home from '@/views/Home'
+import authMiddleware from './../../middleware/auth'
 
 export default [
   {
-    path: '/',
+    path: '',
     component: Home,
-    name: 'home'
+    name: 'home',
   },
   {
     path: '/favorites',
     component: () => import('@/views/Favorites/'),
-    name: 'favorites'
+    name: 'favorites',
   },
   {
     path: '/movies/discover',
     component: () => import('@/views/Discover/'),
-    name: 'discover'
+    name: 'discover',
   },
   {
     path: '/category/:id/',
     component: () => import('@/views/Category/'),
-    name: 'category'
+    name: 'category',
   },
   {
     path: '/movies/:id/',
@@ -29,42 +30,40 @@ export default [
         path: '',
         alias: 'cast',
         component: () => import('@/views/MovieCredits/'),
-        name: 'cast'
+        name: 'cast',
       },
       {
         path: 'crew',
         component: () => import('@/views/MovieCredits/'),
-        name: 'crew'
-      }
-    ]
+        name: 'crew',
+      },
+    ],
   },
   {
     path: '/person/:id/',
     component: () => import('@/views/Person/'),
-    name: 'person'
+    name: 'person',
   },
   {
     path: '/profile',
     component: () => import('@/views/Profile/'),
-    name: 'profile'
+    name: 'profile',
+    meta: {
+      middleware: authMiddleware,
+    },
   },
   {
     path: '/dashboard',
     component: () => import('@/views/Dashboard/'),
-    name: 'dashboard'
-  },
-  {
-    path: '/about',
-    component: () => import('@/views/About/'),
-    name: 'about'
+    name: 'dashboard',
   },
   {
     path: '/404',
     name: '404',
-    component: () => import('@/views/_404/')
+    component: () => import('@/views/_404/'),
   },
   {
-    path: '*',
-    redirect: '404'
-  }
+    path: '/*',
+    redirect: '404',
+  },
 ]

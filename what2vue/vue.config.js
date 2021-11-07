@@ -1,5 +1,7 @@
 module.exports = {
-  css: {
-    sourceMap: true
-  }
+  pluginOptions: {
+    webpackBundleAnalyzer: {
+      openAnalyzer: true,
+    },
+  },
 }

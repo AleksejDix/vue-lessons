@@ -1,1 +1,4 @@
 .now
+.vercel
+node_modules/
+dist

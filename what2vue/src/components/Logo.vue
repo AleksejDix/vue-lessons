@@ -1,5 +1,9 @@
-<template functional>
-  <router-link to="/">
+<template>
+  <router-link
+    :to="{
+      name: 'home',
+    }"
+  >
     <img
       class="c-logo h-10"
       alt="logo"
