@@ -5,7 +5,7 @@
   "author": "Aleksej Dix",
   "license": "MIT",
   "scripts": {
-    "dev": "vuepress dev workshop",
+    "serve": "vuepress dev workshop",
     "build": "vuepress build workshop",
     "now-build": "npm run build && mv workshop/.vuepress/dist dist"
   },

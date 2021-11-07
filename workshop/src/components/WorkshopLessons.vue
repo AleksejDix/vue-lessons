@@ -40,7 +40,7 @@
               <div
                 class="
                   rounded-full
-                  group-hover:bg-green-100 group-hover:bg-green-800
+                  group-hover:bg-green-100
                   border-2
                   w-6
                   h-6
@@ -77,7 +77,7 @@
                   id: lesson.id,
                 },
               }"
-              class="inline-block flex items-center"
+              class="inline-block items-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@
                   id: lesson.id,
                 },
               }"
-              class="inline-block flex items-center"
+              class="inline-block items-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

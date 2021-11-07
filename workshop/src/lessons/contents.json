@@ -8,5 +8,7 @@
   "6": "Single File Component",
   "7": "Dynamic Form",
   "8": "Working with Lists",
-  "9": "Watching the data for change"
+  "9": "Watching the data for change",
+  "10": "Composition API",
+  "11": "Context or Provide Inject"
 }

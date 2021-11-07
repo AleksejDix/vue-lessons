@@ -4,7 +4,7 @@
       <WorkshopInstruction />
     </div>
     <div class="w-1/2 relative">
-      <div class="grid fixed h-full w-full top-0 pt-16">
+      <div class="grid fixed h-full w-1/2 top-0 pt-16">
         <WorkshopTabs />
         <div class="bg-white">
           <router-view />

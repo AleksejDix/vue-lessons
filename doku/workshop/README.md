@@ -16,9 +16,9 @@
 1. Working with Remote Data
 1. Vue Router
 1. Vue Meta
-1. State Management - Vuex
-1. Extra from the Ecosystem
-
+1. State Management with Pinia
+1. Composition API
+1. Advanced Patterns like Provide Enject, Component Composition
 ## What we will not  cover
 
 1. Authentication & Authorization
