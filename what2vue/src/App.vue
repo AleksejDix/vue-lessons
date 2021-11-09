@@ -80,10 +80,15 @@
         </template>
       </dynamic-layout>
     </div>
+    <VueQueryDevTools />
   </div>
 </template>
 
 <script>
+import { useQueryProvider } from 'vue-query'
+
+import { VueQueryDevTools } from 'vue-query/devtools'
+
 import { mapActions } from 'vuex'
 
 import AppLogo from '@/components/Logo'
@@ -102,6 +107,10 @@ export default {
     MobileMenu,
     Login,
     DynamicLayout,
+    VueQueryDevTools,
+  },
+  setup() {
+    useQueryProvider()
   },
   data() {
     return {
