@@ -1,11 +1,16 @@
 import { defineStore } from 'pinia'
-import { ref, computed, watchEffect } from '@vue/composition-api'
+import { computed, watchEffect } from '@vue/composition-api'
+import { useStorage } from '@vueuse/core'
 
 export const useFavorites = defineStore('favorites', () => {
-  const favorites = ref([])
+  const favorites = useStorage('favorites', [])
+
+  const count = computed(() => favorites.value.length)
+
+  useStorage('favorites', favorites.value)
 
   watchEffect(() => {
-    console.log(favorites.value)
+    console.log(count.value)
   })
 
   function create(payload) {
@@ -22,7 +27,7 @@ export const useFavorites = defineStore('favorites', () => {
 
   return {
     movies: computed(() => favorites.value),
-    index: computed(() => favorites.value.length),
+    count,
     create,
     destroy,
     show,

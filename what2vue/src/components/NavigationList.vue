@@ -11,18 +11,24 @@
     <router-link
       class="block lg:inline-block px-3 py-2 rounded-md text-sm leading-6 font-medium text-gray-300"
       :to="{ name: 'favorites' }"
-      >Favorites 9999
+      >Favorites {{ favorites.count }}
     </router-link>
   </div>
 </template>
 
 <script>
+import { useFavorites } from '@/plugins/pinia/favorites.js'
 export default {
   props: {
     navigation: {
       type: Array,
       required: true,
     },
+  },
+  setup() {
+    const favorites = useFavorites()
+
+    return { favorites }
   },
 }
 </script>
