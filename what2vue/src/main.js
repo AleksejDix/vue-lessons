@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import router from '@/plugins/router'
-import { createPinia, PiniaVuePlugin } from 'pinia/dist/pinia.cjs'
+import { createPinia, PiniaVuePlugin } from 'pinia'
 import '@/plugins/composition-api'
 import '@/plugins/portal'
 import '@/directives'

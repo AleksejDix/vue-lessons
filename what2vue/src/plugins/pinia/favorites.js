@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia/dist/pinia.cjs'
+import { defineStore } from 'pinia'
 import { ref, computed, watchEffect } from '@vue/composition-api'
 
 export const useFavorites = defineStore('favorites', () => {
