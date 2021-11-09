@@ -32,8 +32,8 @@
         </div>
         <div class="px-4 sm:px-0">
           <div class="flex gap-4 py-4">
-            <button class="app-button">
-              {{ isFavorite ? 'remove from' : 'add to' }} favorites
+            <button class="app-button" @click="favorite.create(data)">
+              {{ 'add to' }} favorites
             </button>
 
             <router-link class="app-button" :to="{ name: 'cast' }"
@@ -61,6 +61,7 @@ import {
   watchEffect,
 } from '@vue/composition-api'
 import { useQuery } from 'vue-query'
+import { useFavorites } from '@/plugins/pinia/favorites.js'
 
 export default defineComponent({
   setup(_props, context) {
@@ -101,6 +102,8 @@ export default defineComponent({
       return `https://image.tmdb.org/t/p/w1400_and_h450_face/${data.value.backdrop_path}`
     })
 
+    const favorite = useFavorites()
+
     return {
       isSuccess,
       data,
@@ -109,12 +112,8 @@ export default defineComponent({
       isVideoSuccess,
       videos,
       videoURL,
+      favorite,
     }
-  },
-  computed: {
-    isFavorite() {
-      return true
-    },
   },
 
   created() {

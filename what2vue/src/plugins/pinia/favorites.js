@@ -1,8 +1,12 @@
 import { defineStore } from 'pinia/dist/pinia.cjs'
-import { ref, computed } from '@vue/composition-api'
+import { ref, computed, watchEffect } from '@vue/composition-api'
 
 export const useFavorites = defineStore('favorites', () => {
   const favorites = ref([])
+
+  watchEffect(() => {
+    console.log(favorites.value)
+  })
 
   function create(payload) {
     favorites.value.push(payload)
