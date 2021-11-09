@@ -14,10 +14,6 @@ router.beforeEach((to, from, next) => {
     NProgress.start()
   }
 
-  if (to.meta.middleware) {
-    return to.meta.middleware({ to, from, next })
-  }
-
   return next()
 })
 

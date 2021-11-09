@@ -89,8 +89,6 @@ import { useQueryProvider } from 'vue-query'
 
 import { VueQueryDevTools } from 'vue-query/devtools'
 
-import { mapActions } from 'vuex'
-
 import AppLogo from '@/components/Logo'
 import MultiSearch from '@/components/MultiSearch'
 import NavigationList from '@/components/NavigationList'
@@ -131,11 +129,9 @@ export default {
     }
   },
   mounted() {
-    this.getProfile()
     this.getCategories()
   },
   methods: {
-    ...mapActions(['getProfile']),
     getCategories() {
       const cats = api.category.index()
       const catLinks = cats.map(({ name: title, id }) => ({

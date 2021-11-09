@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isLoggedIn" v-click-outside="close" class="ml-3 relative">
+    <div v-click-outside="close" class="ml-3 relative">
       <div>
         <button
           id="user-menu"
@@ -9,13 +9,7 @@
           aria-haspopup="true"
           :aria-expanded="isOpen"
           @click="toggle"
-        >
-          <img
-            class="h-10 w-10 rounded-full"
-            :src="`//0.gravatar.com/avatar/${user.avatar.gravatar.hash}`"
-            :alt="user.username"
-          />
-        </button>
+        ></button>
       </div>
       <transition
         enter-class="transform opacity-0 scale-95"
@@ -41,11 +35,10 @@
             <router-link
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               :to="{ name: 'favorites' }"
-              >Favorites {{ index }}</router-link
-            >
+              >Favorites 9999
+            </router-link>
             <button
               class="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              @click="logout"
             >
               Log out
             </button>
@@ -53,10 +46,9 @@
         </div>
       </transition>
     </div>
-    <div v-if="isLoggedOut">
+    <div>
       <button
         class="block border-2 border-green-300 lg:inline-block px-3 py-2 rounded-md text-sm leading-6 font-medium text-green-300 hover:text-green-400 border-green-400 transition-all"
-        @click="login"
       >
         login
       </button>
@@ -65,19 +57,13 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-
 export default {
   data() {
     return {
       isOpen: false,
     }
   },
-  computed: {
-    ...mapGetters(['user', 'isLoggedIn', 'isLoggedOut', 'index']),
-  },
   methods: {
-    ...mapActions(['login', 'logout']),
     open() {
       this.isOpen = true
     },

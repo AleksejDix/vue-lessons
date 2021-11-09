@@ -8,6 +8,11 @@
       :to="{ name, params, query }"
       >{{ title }}</router-link
     >
+    <router-link
+      class="block lg:inline-block px-3 py-2 rounded-md text-sm leading-6 font-medium text-gray-300"
+      :to="{ name: 'favorites' }"
+      >Favorites 9999
+    </router-link>
   </div>
 </template>
 

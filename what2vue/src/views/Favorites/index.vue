@@ -10,17 +10,19 @@
 </template>
 
 <script>
+import { useFavorites } from '@/plugins/pinia/favorites.js'
 import MovieList from '@/components/MovieList'
 export default {
   components: {
     MovieList,
   },
+  setup() {
+    const { movies } = useFavorites()
+    return { movies }
+  },
   computed: {
     hasMovies() {
       return this.movies.length > 0
-    },
-    movies() {
-      return this.$store.getters.favorites
     },
   },
   created() {

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="movie">
+  <div v-if="isSuccess">
     <div
       class="banner flex items-center justify-center"
       :style="{
@@ -9,7 +9,7 @@
     >
       <div class="flex items-center justify-center h-32">
         <h1 class="text-white text-5xl font-extralight">
-          {{ movie.title }}
+          {{ data.title }}
         </h1>
       </div>
     </div>
@@ -32,7 +32,7 @@
         </div>
         <div class="px-4 sm:px-0">
           <div class="flex gap-4 py-4">
-            <button class="app-button" @click="toggleFavorite">
+            <button class="app-button">
               {{ isFavorite ? 'remove from' : 'add to' }} favorites
             </button>
 
@@ -54,77 +54,73 @@
 
 <script>
 import api from '@/api'
+import {
+  defineComponent,
+  computed,
+  reactive,
+  watchEffect,
+} from '@vue/composition-api'
+import { useQuery } from 'vue-query'
 
-const getFirstVideo = (id) => async () => {
-  const response = await api.movieVideos.index(id)
-  const [firstVideo] = response.results
-  if (!firstVideo) return
-  if (!firstVideo.key) return
-  return firstVideo.key
-}
+export default defineComponent({
+  setup(_props, context) {
+    const { isSuccess, data } = useQuery(
+      ['movies', { id: context.root.$route.params.id }],
+      () => api.movie.show(context.root.$route.params.id)
+    )
 
-export default {
-  data() {
+    const movieId = computed(() => data.value?.id)
+    const enabled = computed(() => !!data.value?.id)
+
+    const { isSuccess: isVideoSuccess, data: videos } = useQuery(
+      reactive(['videos', { movieId: movieId.value }]),
+      () => api.movieVideos.index(movieId.value),
+      reactive({
+        enabled,
+      })
+    )
+
+    watchEffect(() => {
+      console.log(videos)
+    })
+
+    const videoURL = computed(() => {
+      if (!Array.isArray(videos.value)) return
+      const [firstVideo] = videos.value
+      if (!firstVideo) return
+      if (!firstVideo.key) return
+      return `https://www.youtube.com/embed/${firstVideo.key}`
+    })
+
+    const posterURL = computed(() => {
+      if (!data.value.poster_path) return
+      return `https://image.tmdb.org/t/p/w500/${data.value.poster_path}`
+    })
+    const backgroundURL = computed(() => {
+      if (!data.value.backdrop_path) return
+      return `https://image.tmdb.org/t/p/w1400_and_h450_face/${data.value.backdrop_path}`
+    })
+
     return {
-      id: this.$route.params.id,
-      loaded: false,
-      movie: '',
-      video: '',
-      people: {},
+      isSuccess,
+      data,
+      backgroundURL,
+      posterURL,
+      isVideoSuccess,
+      videos,
+      videoURL,
     }
   },
   computed: {
     isFavorite() {
-      return !!this.$store.getters.show(this.movie.id)
-    },
-    videoURL() {
-      if (!this.video) return
-      return `https://www.youtube.com/embed/${this.video}`
-    },
-    posterURL() {
-      if (!this.movie.poster_path) return
-      return `https://image.tmdb.org/t/p/w500/${this.movie.poster_path}`
-    },
-    backgroundURL() {
-      if (!this.movie.backdrop_path) return
-      return `https://image.tmdb.org/t/p/w1400_and_h450_face/${this.movie.backdrop_path}`
+      return true
     },
   },
-  mounted() {
-    this.getMoviePage()
-  },
+
   created() {
     this.$emit('updateLayout', 'SinglePageLayout')
   },
-  methods: {
-    toggleFavorite() {
-      this.isFavorite
-        ? this.$store.dispatch('DESTROY_FAVORITE', this.movie.id)
-        : this.$store.dispatch('STORE_FAVORITE', this.movie)
-    },
-    async getMovie() {
-      const response = await api.movie.show(this.id)
-      return response
-    },
-    getMoviePage() {
-      this.loaded = false
-      const setMovie = (movie) => ((this.movie = movie), movie)
-
-      const setVideo = (video) => {
-        this.video = video
-      }
-
-      return this.getMovie()
-        .then(setMovie)
-        .then(getFirstVideo(this.id))
-        .then((response) => {
-          this.loaded = true
-          setVideo(response)
-          return response
-        })
-    },
-  },
-}
+})
 </script>
 
 <style scoped>

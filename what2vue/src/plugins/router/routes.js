@@ -1,9 +1,8 @@
 import Home from '@/views/Home'
-import authMiddleware from './../../middleware/auth'
 
 export default [
   {
-    path: '',
+    path: '/',
     component: Home,
     name: 'home',
   },
@@ -48,9 +47,7 @@ export default [
     path: '/profile',
     component: () => import('@/views/Profile/'),
     name: 'profile',
-    meta: {
-      middleware: authMiddleware,
-    },
+    meta: {},
   },
   {
     path: '/dashboard',
